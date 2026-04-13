@@ -1,12 +1,244 @@
 <!DOCTYPE html>
-<html>
+<html lang="fr">
 <head>
 <meta charset="UTF-8">
-<meta http-equiv="refresh" content="0;url=https://aiafvjhiprdldtwmktur.supabase.co/functions/v1/admin-journee">
-<title>Redirection admin...</title>
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Admin — Journée Espérance</title>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:-apple-system,BlinkMacSystemFont,sans-serif;background:#0d1b2a;color:#fff;min-height:100vh}
+#login-page{min-height:100vh;display:flex;align-items:center;justify-content:center;padding:2rem}
+.card{background:#1a2744;border:1px solid rgba(201,162,39,.25);border-radius:20px;padding:3.5rem 3rem;width:100%;max-width:420px;text-align:center;box-shadow:0 40px 80px rgba(0,0,0,.4)}
+.logo{color:#c9a227;font-size:.65rem;letter-spacing:.35em;text-transform:uppercase;margin-bottom:2rem}
+h1{font-size:1.5rem;font-weight:600;margin-bottom:.4rem}
+.sub{color:#a0aab8;font-size:.85rem;margin-bottom:2.5rem}
+.field{width:100%;padding:1rem;margin-bottom:1rem;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.15);border-radius:10px;color:#fff;font-size:1.05rem;text-align:center;letter-spacing:.1em;outline:none;font-family:inherit}
+.field:focus{border-color:#c9a227}
+.btn{width:100%;padding:1rem;background:#c9a227;color:#0d1b2a;border:none;border-radius:10px;font-size:1rem;font-weight:700;cursor:pointer;font-family:inherit}
+.btn:hover{background:#e8c547}
+.err{margin-top:1rem;padding:.8rem;background:rgba(239,68,68,.15);border:1px solid rgba(239,68,68,.35);border-radius:8px;color:#fca5a5;font-size:.9rem;display:none}
+
+#dash-page{display:none}
+.top{background:#111e2e;border-bottom:1px solid rgba(255,255,255,.07);padding:1rem 2rem;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:1rem;position:sticky;top:0;z-index:10}
+.top h2{font-size:1rem;font-weight:600}
+.top small{font-size:.75rem;color:#a0aab8}
+.top-r{display:flex;gap:.75rem;flex-wrap:wrap}
+.tbtn{height:36px;padding:0 16px;border-radius:8px;cursor:pointer;font-size:.82rem;border:1px solid rgba(255,255,255,.12);background:transparent;color:#fff;font-family:inherit}
+.tbtn:hover{background:rgba(255,255,255,.07)}
+.tbtn.gold{background:#c9a227;color:#0d1b2a;border:none;font-weight:700}
+.tbtn.gold:hover{background:#e8c547}
+.main{padding:2rem;max-width:1200px;margin:0 auto}
+.stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(130px,1fr));gap:1rem;margin-bottom:2rem}
+.stat{background:#1a2744;border:1px solid rgba(201,162,39,.12);border-radius:12px;padding:1.3rem}
+.stat .v{font-size:2.2rem;font-weight:700;color:#e8c547;line-height:1;margin-bottom:.25rem}
+.stat .l{font-size:.68rem;text-transform:uppercase;letter-spacing:.1em;color:#a0aab8}
+.bar{display:flex;gap:.75rem;margin-bottom:.75rem;flex-wrap:wrap}
+.bar input{flex:1;min-width:180px;height:36px;padding:0 12px;background:#1a2744;border:1px solid rgba(255,255,255,.1);border-radius:8px;color:#fff;font-size:.9rem;outline:none;font-family:inherit}
+.bar input:focus{border-color:#c9a227}
+.ct{font-size:.75rem;color:#6b7a99;margin-bottom:.5rem}
+.tcard{background:#111e2e;border:1px solid rgba(255,255,255,.06);border-radius:12px;overflow:hidden}
+.sc{overflow-x:auto}
+table{width:100%;border-collapse:collapse;font-size:.84rem}
+th{padding:.75rem 1rem;text-align:left;font-size:.67rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:#a0aab8;background:rgba(255,255,255,.02);border-bottom:1px solid rgba(255,255,255,.06);cursor:pointer;white-space:nowrap}
+th:hover{color:#c9a227}
+td{padding:.85rem 1rem;color:#d0d8e8;border-bottom:1px solid rgba(255,255,255,.04);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:180px}
+tr:last-child td{border-bottom:none}
+tr:hover td{background:rgba(255,255,255,.03)}
+td.b{font-weight:600;color:#fff}td.m{color:#a0aab8}
+td.d{font-size:.75rem;color:#6b7a99}td.i{font-style:italic;color:#8899b8}
+.nb{display:inline-block;background:rgba(201,162,39,.15);color:#c9a227;font-size:.72rem;font-weight:600;padding:1px 8px;border-radius:99px;border:1px solid rgba(201,162,39,.25)}
+.empty{text-align:center;padding:2.5rem;color:#6b7a99;font-size:.9rem}
+.eb{background:rgba(239,68,68,.1);border:1px solid rgba(239,68,68,.25);border-radius:8px;padding:.8rem 1rem;color:#fca5a5;font-size:.85rem;margin-bottom:1rem;display:none}
+.lr{font-size:.7rem;color:#6b7a99;margin-top:.6rem;text-align:right}
+</style>
 </head>
 <body>
-<script>window.location.href="https://aiafvjhiprdldtwmktur.supabase.co/functions/v1/admin-journee";</script>
-<p>Redirection en cours... <a href="https://aiafvjhiprdldtwmktur.supabase.co/functions/v1/admin-journee">Cliquer ici</a></p>
+
+<div id="login-page">
+  <div class="card">
+    <div class="logo">Ensemble pour la fraternité</div>
+    <h1>Administration</h1>
+    <p class="sub">Journée Espérance · 17 octobre 2026</p>
+    <form onsubmit="doLogin(); return false;">
+      <input class="field" id="pwd-field" type="password" placeholder="Mot de passe" autocomplete="off">
+      <button class="btn" type="submit">Accéder au tableau de bord</button>
+    </form>
+    <div class="err" id="login-err">Mot de passe incorrect.</div>
+  </div>
+</div>
+
+<div id="dash-page">
+  <div class="top">
+    <div>
+      <h2>Inscriptions — Journée Espérance</h2>
+      <small>17 octobre 2026</small>
+    </div>
+    <div class="top-r">
+      <button class="tbtn gold" onclick="loadData()">↻ Actualiser</button>
+      <button class="tbtn" onclick="exportCSV()">↓ CSV</button>
+      <button class="tbtn" onclick="doLogout()" style="color:#a0aab8">Déconnexion</button>
+    </div>
+  </div>
+  <div class="main">
+    <div class="stats">
+      <div class="stat"><div class="v" id="s1">—</div><div class="l">Inscrits</div></div>
+      <div class="stat"><div class="v" id="s2">—</div><div class="l">Personnes</div></div>
+      <div class="stat"><div class="v" id="s3">—</div><div class="l">Aujourd'hui</div></div>
+      <div class="stat"><div class="v" id="s4">—</div><div class="l">Cette semaine</div></div>
+    </div>
+    <div id="err-b" class="eb"></div>
+    <div class="bar">
+      <input type="search" id="search-q" placeholder="Rechercher nom, email, téléphone..." oninput="renderTable()">
+      <button class="tbtn" onclick="sortBy('nom')">Nom ↕</button>
+      <button class="tbtn" onclick="sortBy('created_at')">Date ↕</button>
+    </div>
+    <div class="ct" id="count-line"></div>
+    <div class="tcard"><div class="sc">
+      <table>
+        <thead><tr>
+          <th onclick="sortBy('created_at')">Date</th>
+          <th onclick="sortBy('prenom')">Prénom</th>
+          <th onclick="sortBy('nom')">Nom</th>
+          <th onclick="sortBy('email')">Email</th>
+          <th>Téléphone</th>
+          <th onclick="sortBy('nombre_personnes')">Pers.</th>
+          <th>Message</th>
+        </tr></thead>
+        <tbody id="table-body">
+          <tr><td colspan="7" class="empty">Connexion requise</td></tr>
+        </tbody>
+      </table>
+    </div></div>
+    <div class="lr" id="last-upd"></div>
+  </div>
+</div>
+
+<script>
+var PWD = 'Esperance2026';
+var SB  = 'https://aiafvjhiprdldtwmktur.supabase.co';
+var KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImFpYWZ2amhpcHJkbGR0d21rdHVyIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzEwMTYzMzcsImV4cCI6MjA4NjU5MjMzN30.YP9_K6srLfHq86EsD4E-StRx_UJxwoboDz3Er4tw2yk';
+
+var allData = [];
+var sortCol = 'created_at';
+var sortAsc = false;
+
+function doLogin() {
+  var v = document.getElementById('pwd-field').value;
+  if (v === PWD) {
+    document.getElementById('login-page').style.display = 'none';
+    document.getElementById('dash-page').style.display  = 'block';
+    document.getElementById('login-err').style.display  = 'none';
+    loadData();
+  } else {
+    document.getElementById('login-err').style.display = 'block';
+    document.getElementById('pwd-field').value = '';
+    document.getElementById('pwd-field').focus();
+  }
+}
+
+function doLogout() {
+  document.getElementById('dash-page').style.display  = 'none';
+  document.getElementById('login-page').style.display = 'flex';
+  document.getElementById('pwd-field').value = '';
+  allData = [];
+}
+
+async function loadData() {
+  document.getElementById('table-body').innerHTML = '<tr><td colspan="7" class="empty">Chargement...</td></tr>';
+  document.getElementById('err-b').style.display  = 'none';
+  try {
+    var r = await fetch(SB + '/rest/v1/journee_esperance_inscriptions?select=*&order=created_at.desc&limit=500', {
+      headers: { apikey: KEY, Authorization: 'Bearer ' + KEY }
+    });
+    if (!r.ok) throw new Error('HTTP ' + r.status);
+    allData = await r.json();
+    updateStats();
+    renderTable();
+    document.getElementById('last-upd').textContent = 'Mis à jour : ' + new Date().toLocaleTimeString('fr-FR');
+  } catch (e) {
+    var eb = document.getElementById('err-b');
+    eb.textContent = 'Erreur : ' + e.message;
+    eb.style.display = 'block';
+    document.getElementById('table-body').innerHTML = '<tr><td colspan="7" class="empty">Erreur de chargement.</td></tr>';
+  }
+}
+
+function updateStats() {
+  var today = new Date().toISOString().slice(0, 10);
+  var week  = new Date(Date.now() - 7 * 864e5).toISOString();
+  document.getElementById('s1').textContent = allData.length;
+  document.getElementById('s2').textContent = allData.reduce(function(s, r) { return s + (parseInt(r.nombre_personnes) || 1); }, 0);
+  document.getElementById('s3').textContent = allData.filter(function(r) { return r.created_at && r.created_at.slice(0, 10) === today; }).length;
+  document.getElementById('s4').textContent = allData.filter(function(r) { return r.created_at && r.created_at >= week; }).length;
+}
+
+function sortBy(col) {
+  sortAsc = (sortCol === col) ? !sortAsc : true;
+  sortCol = col;
+  renderTable();
+}
+
+function getFiltered() {
+  var q = (document.getElementById('search-q').value || '').toLowerCase().trim();
+  if (!q) return allData.slice();
+  return allData.filter(function(r) {
+    return [r.nom, r.prenom, r.email, r.telephone, r.message].some(function(v) {
+      return v && String(v).toLowerCase().includes(q);
+    });
+  });
+}
+
+function renderTable() {
+  var data = getFiltered();
+  data.sort(function(a, b) {
+    var av = a[sortCol] || '', bv = b[sortCol] || '';
+    if (sortCol === 'nombre_personnes') { av = +av || 0; bv = +bv || 0; }
+    return (av < bv ? -1 : av > bv ? 1 : 0) * (sortAsc ? 1 : -1);
+  });
+  document.getElementById('count-line').textContent = data.length + ' inscription(s)';
+  if (!data.length) {
+    document.getElementById('table-body').innerHTML = '<tr><td colspan="7" class="empty">Aucun résultat.</td></tr>';
+    return;
+  }
+  document.getElementById('table-body').innerHTML = data.map(function(r) {
+    var d  = r.created_at ? new Date(r.created_at) : null;
+    var ds = d ? d.toLocaleDateString('fr-FR', { day:'2-digit', month:'2-digit', year:'2-digit' }) + ' ' + d.toLocaleTimeString('fr-FR', { hour:'2-digit', minute:'2-digit' }) : '—';
+    return '<tr>' +
+      '<td class="d">'  + esc(ds)                         + '</td>' +
+      '<td class="b">'  + esc(r.prenom  || '—')           + '</td>' +
+      '<td class="b">'  + esc(r.nom     || '—')           + '</td>' +
+      '<td class="m">'  + esc(r.email   || '—')           + '</td>' +
+      '<td>'            + esc(r.telephone || '—')          + '</td>' +
+      '<td><span class="nb">' + (r.nombre_personnes || 1) + '</span></td>' +
+      '<td class="i">'  + esc(r.message  || '')           + '</td>' +
+      '</tr>';
+  }).join('');
+}
+
+function esc(s) {
+  return String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+}
+
+function exportCSV() {
+  var data = getFiltered();
+  var lines = ['Date,Prénom,Nom,Email,Téléphone,Personnes,Message'];
+  data.forEach(function(r) {
+    var row = [
+      r.created_at ? new Date(r.created_at).toLocaleString('fr-FR') : '',
+      r.prenom || '', r.nom || '', r.email || '',
+      r.telephone || '', r.nombre_personnes || 1, r.message || ''
+    ].map(function(v) { return '"' + String(v).replace(/"/g, '""') + '"'; });
+    lines.push(row.join(','));
+  });
+  var a = document.createElement('a');
+  a.href = 'data:text/csv;charset=utf-8,' + encodeURIComponent('\uFEFF' + lines.join('\r\n'));
+  a.download = 'inscrits-' + new Date().toISOString().slice(0, 10) + '.csv';
+  a.click();
+}
+
+setInterval(function() {
+  if (document.getElementById('dash-page').style.display !== 'none') loadData();
+}, 5 * 60 * 1000);
+</script>
 </body>
 </html>
