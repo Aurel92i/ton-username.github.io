@@ -2,223 +2,339 @@
 <html lang="fr">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Journée Espérance — 17 Octobre 2026</title>
 <style>
-*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
-html{scroll-behavior:smooth}
-body{font-family:Georgia,serif;background:#0d1b2a;color:#fff;overflow-x:hidden}
+/* ── RESET ── */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body { font-family: Georgia, serif; background: #0d1b2a; color: #fff; overflow-x: hidden; }
 
-/* ══ HERO ══
-   Fond sombre pleine largeur
-   Photo centrée dans un cadre de taille raisonnable
-   Texte en dessous / dessus selon layout */
-.hero{
-  background:#0d1b2a;
-  padding:5rem 2.5rem 5rem;
-  display:grid;
-  grid-template-columns:1fr 480px;
-  gap:5rem;
-  align-items:center;
-  max-width:1200px;
-  margin:0 auto;
-}
-@media(max-width:900px){
-  .hero{grid-template-columns:1fr;gap:3rem;padding:4rem 1.5rem}
+/* ── VARIABLES ── */
+:root {
+  --gold: #c9a227;
+  --gold-l: #e8c547;
+  --navy: #1a2744;
+  --dark: #0d1b2a;
+  --darker: #08111c;
+  --muted: #a0aab8;
+  --text: #b8c8dd;
+  --cream: #f5f0e8;
 }
 
-/* Texte gauche */
-.hero-text{}
-.eyebrow{
-  display:inline-flex;align-items:center;gap:10px;
-  font-size:.68rem;letter-spacing:.3em;text-transform:uppercase;
-  color:#c9a227;margin-bottom:2rem;
+/* ══════════════════════════════════════
+   HERO — 2 colonnes, texte + photo
+══════════════════════════════════════ */
+.hero-wrap {
+  background: var(--dark);
+  border-bottom: 1px solid rgba(201,162,39,.08);
 }
-.eyebrow::before{content:'◆';font-size:8px;color:#c9a227;display:block;line-height:1.8;flex-shrink:0}
-h1{
-  font-size:clamp(3.5rem,6vw,6rem);font-weight:700;
-  line-height:.92;letter-spacing:-.02em;color:#e8c547;margin-bottom:.1rem;
+.hero {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 5rem 2.5rem;
+  display: grid;
+  grid-template-columns: 1fr 480px;
+  gap: 5rem;
+  align-items: center;
 }
-.hero-sub{
-  font-size:clamp(2rem,3.5vw,3.8rem);font-weight:900;
-  letter-spacing:.1em;text-transform:uppercase;color:#fff;margin-bottom:2.5rem;
-}
-.hero-meta{display:flex;flex-direction:column;gap:.6rem;margin-bottom:2.8rem}
-.dline{display:flex;align-items:center;gap:.8rem;font-size:.9rem;color:rgba(255,255,255,.5);letter-spacing:.03em}
-.dline::before{content:'◆';font-size:7px;color:rgba(201,162,39,.5);display:block;line-height:1.8;flex-shrink:0}
-.dline strong{color:#c9a227;font-weight:400}
-.hero-desc{
-  font-size:.95rem;line-height:1.8;color:#6b7a99;max-width:380px;
-  font-style:italic;margin-bottom:3rem;
-}
-.cta{
-  display:inline-flex;align-items:center;gap:.6rem;
-  background:#c9a227;color:#0d1b2a;
-  font-family:Georgia,serif;font-weight:700;font-size:.95rem;letter-spacing:.05em;
-  padding:.9rem 2.4rem;border-radius:3px;text-decoration:none;
-  transition:background .2s,transform .2s;
-}
-.cta:hover{background:#e8c547;transform:translateX(3px)}
-.cta::after{content:'→'}
-
-/* Photo droite — taille maîtrisée, pas de distortion */
-.hero-photo{
-  position:relative;
-}
-.photo-frame{
-  position:relative;
-  border-radius:8px;
-  overflow:hidden;
-  /* Ratio naturel de la photo : 1618/1537 ≈ 1.05 — quasi carré */
-  aspect-ratio:1618/1537;
-  max-height:520px;
-  box-shadow:0 30px 80px rgba(0,0,0,.5);
-  border:1px solid rgba(201,162,39,.15);
-}
-.photo-frame img{
-  width:100%;height:100%;
-  object-fit:cover;
-  object-position:center center;
-  display:block;
-  transition:transform 6s ease-out;
-}
-.photo-frame:hover img{transform:scale(1.03)}
-/* Petit dégradé en bas de la photo */
-.photo-frame::after{
-  content:'';
-  position:absolute;bottom:0;left:0;right:0;height:30%;
-  background:linear-gradient(to top,rgba(13,27,42,.4),transparent);
-  pointer-events:none;
-}
-/* Décoration dorée */
-.photo-deco{
-  position:absolute;
-  bottom:-12px;right:-12px;
-  width:80%;height:80%;
-  border:1px solid rgba(201,162,39,.2);
-  border-radius:8px;
-  pointer-events:none;
-  z-index:-1;
+@media(max-width:900px) {
+  .hero { grid-template-columns: 1fr; gap: 3rem; padding: 4rem 1.5rem; }
 }
 
-/* Bande décorative entre hero et contenu */
-.separator{
-  height:1px;
-  background:linear-gradient(to right,transparent,rgba(201,162,39,.2) 30%,rgba(201,162,39,.2) 70%,transparent);
-  margin:0 2.5rem;
+.hero-eyebrow {
+  display: inline-flex; align-items: center; gap: 10px;
+  font-size: .68rem; letter-spacing: .3em; text-transform: uppercase;
+  color: var(--gold); margin-bottom: 2rem;
+}
+.hero-eyebrow::before {
+  content: '◆'; font-size: 8px; color: var(--gold); line-height: 1.8;
+}
+.hero-title {
+  font-size: clamp(3.5rem, 6vw, 6rem);
+  font-weight: 700; line-height: .92; letter-spacing: -.02em;
+  color: var(--gold-l); margin-bottom: .15rem;
+}
+.hero-sub {
+  font-size: clamp(2rem, 3.5vw, 3.8rem);
+  font-weight: 900; letter-spacing: .1em; text-transform: uppercase;
+  color: #fff; margin-bottom: 2.5rem;
+}
+.hero-dates {
+  display: flex; flex-direction: column; gap: .55rem; margin-bottom: 2.8rem;
+}
+.hero-date {
+  display: flex; align-items: center; gap: .8rem;
+  font-size: .9rem; color: rgba(255,255,255,.6);
+}
+.hero-date strong { color: var(--gold); }
+.hero-date::before {
+  content: '◆'; font-size: 6px; color: rgba(201,162,39,.5); flex-shrink: 0;
+}
+.hero-desc {
+  font-size: .95rem; line-height: 1.8; color: #6b7a99;
+  max-width: 400px; font-style: italic; margin-bottom: 3rem;
+}
+.cta {
+  display: inline-flex; align-items: center; gap: .6rem;
+  background: var(--gold); color: var(--dark);
+  font-family: Georgia, serif; font-weight: 700;
+  font-size: .95rem; letter-spacing: .05em;
+  padding: .9rem 2.4rem; border-radius: 3px;
+  text-decoration: none; transition: background .2s, transform .2s;
+}
+.cta:hover { background: var(--gold-l); transform: translateX(3px); }
+.cta::after { content: '→'; }
+
+/* Photo */
+.hero-photo { position: relative; }
+.photo-frame {
+  border-radius: 8px; overflow: hidden;
+  aspect-ratio: 1618 / 1537;
+  max-height: 520px;
+  border: 1px solid rgba(201,162,39,.15);
+  box-shadow: 0 30px 80px rgba(0,0,0,.5);
+}
+.photo-frame img {
+  width: 100%; height: 100%;
+  object-fit: cover; object-position: center center; display: block;
+}
+.photo-deco {
+  position: absolute; bottom: -12px; right: -12px;
+  width: 80%; height: 80%;
+  border: 1px solid rgba(201,162,39,.18);
+  border-radius: 8px; pointer-events: none; z-index: -1;
 }
 
-/* ══ CITATION ══ */
-.quote-band{
-  background:#1a2744;padding:4.5rem 0;
-  border-top:1px solid rgba(201,162,39,.1);border-bottom:1px solid rgba(201,162,39,.1);
+/* ══════════════════════════════════════
+   CITATION
+══════════════════════════════════════ */
+.quote-band {
+  background: var(--navy); padding: 4.5rem 0;
+  border-top: 1px solid rgba(201,162,39,.1);
+  border-bottom: 1px solid rgba(201,162,39,.1);
 }
-.quote-band blockquote{
-  max-width:680px;margin:0 auto;text-align:center;
-  font-style:italic;font-size:clamp(1.3rem,2.5vw,1.9rem);
-  line-height:1.55;color:#f0ebe0;padding:0 2rem;
+.quote-band blockquote {
+  max-width: 700px; margin: 0 auto; text-align: center;
+  font-style: italic; font-size: clamp(1.3rem, 2.5vw, 1.9rem);
+  line-height: 1.55; color: var(--cream); padding: 0 2rem;
 }
-.quote-band blockquote::before,.quote-band blockquote::after{
-  content:'';display:block;width:36px;height:2px;background:#c9a227;margin:1.3rem auto;
+.quote-band blockquote::before,
+.quote-band blockquote::after {
+  content: ''; display: block; width: 36px; height: 2px;
+  background: var(--gold); margin: 1.3rem auto;
 }
 
-/* ══ SECTIONS ══ */
-.container{max-width:1100px;margin:0 auto;padding:0 2.5rem}
-.section{padding:5.5rem 0}
-.lbl{display:inline-flex;align-items:center;gap:10px;font-size:.67rem;letter-spacing:.3em;text-transform:uppercase;color:#c9a227;margin-bottom:.9rem}
-.lbl::before{content:'◆';font-size:8px;color:#c9a227;display:block;line-height:1.8;flex-shrink:0}
-.stitle{font-size:clamp(1.9rem,3.5vw,2.8rem);font-weight:700;color:#fff;line-height:1.1;margin-bottom:1.8rem}
-.sline{width:55px;height:3px;background:#c9a227;margin-bottom:2rem}
-.two-col{display:grid;grid-template-columns:1.25fr 1fr;gap:5rem;align-items:start}
-@media(max-width:800px){.two-col{grid-template-columns:1fr;gap:3rem}}
-.prose p{font-size:1rem;line-height:1.85;color:#b0c0d4;margin-bottom:1.2rem}
-.prose p:last-child{margin-bottom:0}
-.prose strong{color:#c9a227;font-weight:400;font-style:italic}
-.icard{background:#1a2744;border:1px solid rgba(201,162,39,.18);border-radius:16px;padding:3rem;position:sticky;top:2rem;align-self:stretch}
-.icard h3{font-size:.85rem;letter-spacing:.12em;text-transform:uppercase;color:#c9a227;margin-bottom:1.8rem;padding-bottom:1rem;border-bottom:1px solid rgba(201,162,39,.12)}
-.irow{display:flex;gap:1.2rem;margin-bottom:1.5rem;align-items:flex-start}
-.iico{width:42px;height:42px;background:rgba(201,162,39,.1);border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:18px;flex-shrink:0}
-.itxt .l{font-size:.68rem;letter-spacing:.1em;text-transform:uppercase;color:#a0aab8;margin-bottom:4px}
-.itxt .v{font-size:1rem;color:#fff;font-weight:500}
-.otag{display:inline-block;margin-top:2rem;background:rgba(201,162,39,.1);border:1px solid rgba(201,162,39,.3);color:#c9a227;font-size:.75rem;letter-spacing:.1em;text-transform:uppercase;padding:.55rem 1.3rem;border-radius:99px;font-weight:500}
+/* ══════════════════════════════════════
+   SECTIONS COMMUNES
+══════════════════════════════════════ */
+.container { max-width: 1100px; margin: 0 auto; padding: 0 2.5rem; }
+.section { padding: 5.5rem 0; }
+@media(max-width:600px) {
+  .container { padding: 0 1.5rem; }
+  .section { padding: 4rem 0; }
+}
 
-/* ══ MISSIONS ══ */
-.msec{padding:5.5rem 0;background:#08111c}
-.mgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;margin-top:3.5rem;background:rgba(201,162,39,.07);border:1px solid rgba(201,162,39,.07);border-radius:12px;overflow:hidden}
-@media(max-width:680px){.mgrid{grid-template-columns:1fr}}
-.mitem{padding:2.8rem 2.3rem;background:#0d1b2a;transition:background .3s}
-.mitem:hover{background:#111e2e}
-.mnum{font-size:3.5rem;font-weight:900;font-style:italic;color:rgba(201,162,39,.07);line-height:1;margin-bottom:1.2rem}
-.mtitle{font-size:.95rem;font-weight:700;color:#c9a227;letter-spacing:.08em;text-transform:uppercase;margin-bottom:.9rem}
-.mtext{font-size:.9rem;line-height:1.8;color:#6b7a99}
+.lbl {
+  display: inline-flex; align-items: center; gap: 10px;
+  font-size: .67rem; letter-spacing: .3em; text-transform: uppercase;
+  color: var(--gold); margin-bottom: .9rem;
+}
+.lbl::before { content: '◆'; font-size: 8px; color: var(--gold); line-height: 1.8; }
+.stitle {
+  font-size: clamp(1.9rem, 3.5vw, 2.8rem);
+  font-weight: 700; color: #fff; line-height: 1.1; margin-bottom: 1.8rem;
+}
+.sline { width: 55px; height: 3px; background: var(--gold); margin-bottom: 2rem; }
 
-/* ══ FORMULAIRE ══ */
-.fsec{padding:6rem 0;background:#0d1b2a}
-.fsec .lbl{justify-content:center}
-.fsec .stitle{text-align:center}
-.fsec .sline{margin:0 auto 2.8rem}
-.fwrap{max-width:680px;margin:0 auto}
-.fgrid{display:grid;grid-template-columns:1fr 1fr;gap:1.4rem;margin-bottom:1.4rem}
-@media(max-width:580px){.fgrid{grid-template-columns:1fr}}
-.fg{display:flex;flex-direction:column;gap:.45rem}
-.fg.s2{grid-column:1/-1}
-.fg label{font-size:.66rem;letter-spacing:.18em;text-transform:uppercase;color:#6b7a99}
-.fg input,.fg textarea,.fg select{background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.09);border-radius:6px;padding:.88rem 1.1rem;color:#fff;font-size:.95rem;font-family:Georgia,serif;outline:none;width:100%;transition:border-color .2s,background .2s}
-.fg input:focus,.fg textarea:focus,.fg select:focus{border-color:#c9a227;background:rgba(201,162,39,.03)}
-.fg textarea{resize:vertical;min-height:95px}
-.fg select option{background:#1a2744}
-.fsubmit{margin-top:2rem;text-align:center}
-.bsub{background:#c9a227;color:#0d1b2a;font-family:Georgia,serif;font-weight:700;font-size:1rem;letter-spacing:.06em;padding:1rem 3.5rem;border:none;border-radius:4px;cursor:pointer;transition:background .2s,transform .2s}
-.bsub:hover{background:#e8c547;transform:translateY(-2px)}
-.bsub:disabled{opacity:.6;transform:none;cursor:default}
-.al{padding:1rem 1.4rem;border-radius:7px;margin-bottom:1.5rem;font-size:.92rem;display:none}
-.al.ok{background:rgba(34,197,94,.08);border:1px solid rgba(34,197,94,.25);color:#86efac;display:block}
-.al.err{background:rgba(239,68,68,.08);border:1px solid rgba(239,68,68,.25);color:#fca5a5;display:block}
+/* ══════════════════════════════════════
+   QUI SOMMES-NOUS
+   Clé : align-items: stretch + height: 100%
+══════════════════════════════════════ */
+.two-col {
+  display: grid;
+  grid-template-columns: 1.2fr 1fr;
+  gap: 4rem;
+  align-items: stretch;   /* ← les deux colonnes ont la même hauteur */
+}
+@media(max-width:820px) { .two-col { grid-template-columns: 1fr; gap: 3rem; } }
 
-/* ══ FOOTER ══ */
-footer{background:#050d16;padding:3rem 2.5rem;text-align:center;border-top:1px solid rgba(201,162,39,.1)}
-.flogo{font-size:.9rem;letter-spacing:.1em;text-transform:uppercase;color:#c9a227;margin-bottom:.4rem}
-.fsub{font-style:italic;font-size:.85rem;color:rgba(255,255,255,.25)}
-.fqr{margin-top:1.8rem;display:flex;flex-direction:column;align-items:center;gap:.5rem}
-.fqr img{width:80px;height:80px;border-radius:8px;border:1px solid rgba(201,162,39,.2)}
-.fqr span{font-size:.65rem;letter-spacing:.12em;text-transform:uppercase;color:#6b7a99}
-@media(max-width:600px){.container{padding:0 1.5rem}.section{padding:4rem 0}.msec{padding:4rem 0}.fsec{padding:4rem 0}}
+.prose p {
+  font-size: 1rem; line-height: 1.85; color: var(--text); margin-bottom: 1.2rem;
+}
+.prose p:last-child { margin-bottom: 0; }
+.prose strong { color: var(--gold); font-weight: 400; font-style: italic; }
+
+/* Carte événement — s'étire pour matcher la colonne gauche */
+.icard {
+  background: var(--navy);
+  border: 1px solid rgba(201,162,39,.2);
+  border-radius: 14px;
+  padding: 2.5rem;
+  height: 100%;              /* ← remplit toute la hauteur de la colonne */
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.icard-head {
+  font-size: .82rem; letter-spacing: .12em; text-transform: uppercase;
+  color: var(--gold); padding-bottom: 1.2rem;
+  border-bottom: 1px solid rgba(201,162,39,.12);
+  margin-bottom: 1.8rem;
+}
+.irow {
+  display: flex; gap: 1.2rem; align-items: flex-start; margin-bottom: 1.4rem;
+}
+.irow:last-of-type { margin-bottom: 0; }
+.iico {
+  width: 40px; height: 40px; flex-shrink: 0;
+  background: rgba(201,162,39,.08); border-radius: 10px;
+  display: flex; align-items: center; justify-content: center; font-size: 17px;
+}
+.itxt .l {
+  font-size: .67rem; letter-spacing: .1em; text-transform: uppercase;
+  color: #6b7a99; margin-bottom: 4px;
+}
+.itxt .v { font-size: .95rem; color: #fff; font-weight: 500; }
+.icard-rows { flex: 1; }
+.otag {
+  display: inline-block; margin-top: 2rem;
+  background: rgba(201,162,39,.08); border: 1px solid rgba(201,162,39,.28);
+  color: var(--gold); font-size: .73rem; letter-spacing: .1em;
+  text-transform: uppercase; padding: .5rem 1.2rem; border-radius: 99px;
+  font-weight: 500;
+}
+
+/* ══════════════════════════════════════
+   MISSIONS
+══════════════════════════════════════ */
+.msec { padding: 5.5rem 0; background: var(--darker); }
+@media(max-width:600px) { .msec { padding: 4rem 0; } }
+.mgrid {
+  display: grid; grid-template-columns: repeat(3, 1fr);
+  gap: 1px; margin-top: 3.5rem;
+  background: rgba(201,162,39,.07);
+  border: 1px solid rgba(201,162,39,.07);
+  border-radius: 12px; overflow: hidden;
+}
+@media(max-width:700px) { .mgrid { grid-template-columns: 1fr; } }
+.mitem {
+  padding: 2.8rem 2.3rem; background: var(--dark); transition: background .3s;
+}
+.mitem:hover { background: #111e2e; }
+.mnum {
+  font-size: 3.8rem; font-weight: 900; font-style: italic;
+  color: rgba(201,162,39,.07); line-height: 1; margin-bottom: 1.2rem;
+}
+.mtitle {
+  font-size: .95rem; font-weight: 700; color: var(--gold);
+  letter-spacing: .07em; text-transform: uppercase; margin-bottom: .9rem;
+}
+.mtext { font-size: .9rem; line-height: 1.8; color: #6b7a99; }
+
+/* ══════════════════════════════════════
+   FORMULAIRE
+══════════════════════════════════════ */
+.fsec { padding: 6rem 0; background: var(--dark); }
+@media(max-width:600px) { .fsec { padding: 4rem 0; } }
+.fsec .lbl { justify-content: center; }
+.fsec .stitle { text-align: center; }
+.fsec .sline { margin: 0 auto 2.8rem; }
+.fwrap { max-width: 700px; margin: 0 auto; }
+.fgrid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.4rem; margin-bottom: 1.4rem; }
+@media(max-width:580px) { .fgrid { grid-template-columns: 1fr; } }
+.fg { display: flex; flex-direction: column; gap: .45rem; }
+.fg.s2 { grid-column: 1 / -1; }
+.fg label {
+  font-size: .66rem; letter-spacing: .18em; text-transform: uppercase; color: #6b7a99;
+}
+.fg input, .fg textarea, .fg select {
+  background: rgba(255,255,255,.03); border: 1px solid rgba(255,255,255,.1);
+  border-radius: 6px; padding: .88rem 1.1rem; color: #fff;
+  font-size: .95rem; font-family: Georgia, serif;
+  outline: none; width: 100%; transition: border-color .2s, background .2s;
+}
+.fg input:focus, .fg textarea:focus, .fg select:focus {
+  border-color: var(--gold); background: rgba(201,162,39,.03);
+}
+.fg textarea { resize: vertical; min-height: 95px; }
+.fg select option { background: var(--navy); }
+.fsubmit { margin-top: 2rem; text-align: center; }
+.bsub {
+  background: var(--gold); color: var(--dark);
+  font-family: Georgia, serif; font-weight: 700;
+  font-size: 1rem; letter-spacing: .06em;
+  padding: 1rem 3.5rem; border: none; border-radius: 4px;
+  cursor: pointer; transition: background .2s, transform .2s;
+}
+.bsub:hover { background: var(--gold-l); transform: translateY(-2px); }
+.bsub:disabled { opacity: .6; transform: none; cursor: default; }
+.al {
+  padding: 1rem 1.4rem; border-radius: 7px;
+  margin-bottom: 1.5rem; font-size: .92rem; display: none;
+}
+.al.ok {
+  background: rgba(34,197,94,.08); border: 1px solid rgba(34,197,94,.25);
+  color: #86efac; display: block;
+}
+.al.err {
+  background: rgba(239,68,68,.08); border: 1px solid rgba(239,68,68,.25);
+  color: #fca5a5; display: block;
+}
+
+/* ══════════════════════════════════════
+   FOOTER
+══════════════════════════════════════ */
+footer {
+  background: #050d16; padding: 3rem 2.5rem;
+  text-align: center; border-top: 1px solid rgba(201,162,39,.1);
+}
+.flogo {
+  font-size: .9rem; letter-spacing: .1em; text-transform: uppercase;
+  color: var(--gold); margin-bottom: .4rem;
+}
+.fsub { font-style: italic; font-size: .85rem; color: rgba(255,255,255,.25); }
+.fqr { margin-top: 1.8rem; display: flex; flex-direction: column; align-items: center; gap: .5rem; }
+.fqr img { width: 80px; height: 80px; border-radius: 8px; border: 1px solid rgba(201,162,39,.2); }
+.fqr span { font-size: .65rem; letter-spacing: .12em; text-transform: uppercase; color: #6b7a99; }
 </style>
 </head>
 <body>
 
-<!-- ══ HERO ══ -->
-<div style="background:#0d1b2a;border-bottom:1px solid rgba(201,162,39,.08)">
+<!-- HERO -->
+<div class="hero-wrap">
   <div class="hero">
     <div class="hero-text">
-      <div class="eyebrow">Ensemble pour la fraternité</div>
-      <h1>Journée</h1>
+      <div class="hero-eyebrow">Ensemble pour la fraternité</div>
+      <h1 class="hero-title">Journée</h1>
       <p class="hero-sub">Espérance</p>
-      <div class="hero-meta">
-        <div class="dline"><strong>Samedi 17 octobre 2026</strong></div>
-        <div class="dline">Lieu à confirmer prochainement</div>
+      <div class="hero-dates">
+        <div class="hero-date"><strong>Samedi 17 octobre 2026</strong></div>
+        <div class="hero-date">Lieu à confirmer prochainement</div>
       </div>
       <p class="hero-desc">Des témoignages vivants portés par des personnes qui ont traversé les épreuves — et qui s'en sont relevées.</p>
-      <a href="#inscription" class="cta">Je m'inscris &nbsp;</a>
+      <a href="#inscription" class="cta">Je m'inscris&nbsp;</a>
     </div>
     <div class="hero-photo">
       <div class="photo-frame">
-        <img src="photo.jpg" alt="La communauté Ensemble pour la fraternité réunie dans le quartier">
+        <img src="photo.jpg" alt="La communauté Ensemble pour la fraternité">
       </div>
       <div class="photo-deco"></div>
     </div>
   </div>
 </div>
 
-<!-- ══ CITATION ══ -->
+<!-- CITATION -->
 <div class="quote-band">
   <blockquote>De nos quartiers,<br>la lumière peut sortir.</blockquote>
 </div>
 
-<!-- ══ QUI SOMMES-NOUS ══ -->
+<!-- QUI SOMMES-NOUS -->
 <section class="section">
   <div class="container">
     <div class="two-col">
+
+      <!-- Colonne gauche -->
       <div>
         <div class="lbl">Qui sommes-nous</div>
         <h2 class="stitle">Ensemble<br>pour la fraternité</h2>
@@ -229,33 +345,72 @@ footer{background:#050d16;padding:3rem 2.5rem;text-align:center;border-top:1px s
           <p>La Journée Espérance, c'est une journée de témoignages vivants portés par des personnes qui ont traversé les épreuves — drogue, violence, exclusion — et qui s'en sont relevées. Ouverte à tous, sans restriction.</p>
         </div>
       </div>
+
+      <!-- Colonne droite — même hauteur grâce à height:100% -->
       <div>
         <div class="icard">
-          <h3>L'événement</h3>
-          <div class="irow"><div class="iico">📅</div><div class="itxt"><div class="l">Date</div><div class="v">Samedi 17 octobre 2026</div></div></div>
-          <div class="irow"><div class="iico">📍</div><div class="itxt"><div class="l">Lieu</div><div class="v">À confirmer prochainement</div></div></div>
-          <div class="irow"><div class="iico">🕊️</div><div class="itxt"><div class="l">Public</div><div class="v">Ouvert à tous, sans condition</div></div></div>
-          <span class="otag">Entrée entièrement gratuite</span>
+          <div>
+            <div class="icard-head">L'événement</div>
+            <div class="icard-rows">
+              <div class="irow">
+                <div class="iico">📅</div>
+                <div class="itxt">
+                  <div class="l">Date</div>
+                  <div class="v">Samedi 17 octobre 2026</div>
+                </div>
+              </div>
+              <div class="irow">
+                <div class="iico">📍</div>
+                <div class="itxt">
+                  <div class="l">Lieu</div>
+                  <div class="v">À confirmer prochainement</div>
+                </div>
+              </div>
+              <div class="irow">
+                <div class="iico">🕊️</div>
+                <div class="itxt">
+                  <div class="l">Public</div>
+                  <div class="v">Ouvert à tous, sans condition</div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div>
+            <span class="otag">Entrée entièrement gratuite</span>
+          </div>
         </div>
       </div>
+
     </div>
   </div>
 </section>
 
-<!-- ══ MISSIONS ══ -->
+<!-- MISSIONS -->
 <section class="msec">
   <div class="container">
     <div class="lbl">Notre mission</div>
     <h2 class="stitle">Ce que nous portons</h2>
     <div class="mgrid">
-      <div class="mitem"><div class="mnum">01</div><div class="mtitle">Rencontrer</div><p class="mtext">Aller vers les habitants — sur la dale Kennedy, au Gros Chêne, dans les lieux de vie — pour rassurer socialement et rappeler que personne n'est seul.</p></div>
-      <div class="mitem"><div class="mnum">02</div><div class="mtitle">Témoigner</div><p class="mtext">Donner la parole à celles et ceux qui s'en sont sortis malgré les épreuves, pour montrer que la lumière peut sortir de nos quartiers.</p></div>
-      <div class="mitem"><div class="mnum">03</div><div class="mtitle">Espérer</div><p class="mtext">Offrir aux jeunes et à tous les habitants des raisons de croire en l'avenir, à travers la foi ou par tout autre chemin de vie.</p></div>
+      <div class="mitem">
+        <div class="mnum">01</div>
+        <div class="mtitle">Rencontrer</div>
+        <p class="mtext">Aller vers les habitants — sur la dale Kennedy, au Gros Chêne, dans les lieux de vie — pour rassurer socialement et rappeler que personne n'est seul.</p>
+      </div>
+      <div class="mitem">
+        <div class="mnum">02</div>
+        <div class="mtitle">Témoigner</div>
+        <p class="mtext">Donner la parole à celles et ceux qui s'en sont sortis malgré les épreuves, pour montrer que la lumière peut sortir de nos quartiers.</p>
+      </div>
+      <div class="mitem">
+        <div class="mnum">03</div>
+        <div class="mtitle">Espérer</div>
+        <p class="mtext">Offrir aux jeunes et à tous les habitants des raisons de croire en l'avenir, à travers la foi ou par tout autre chemin de vie.</p>
+      </div>
     </div>
   </div>
 </section>
 
-<!-- ══ FORMULAIRE ══ -->
+<!-- FORMULAIRE -->
 <section class="fsec" id="inscription">
   <div class="container">
     <div class="lbl">Participer</div>
@@ -271,8 +426,10 @@ footer{background:#050d16;padding:3rem 2.5rem;text-align:center;border-top:1px s
           <div class="fg"><label>Téléphone</label><input type="tel" name="telephone" placeholder="06 00 00 00 00"></div>
           <div class="fg"><label>Nombre de personnes</label>
             <select name="nombre_personnes">
-              <option value="1">1 personne</option><option value="2">2 personnes</option>
-              <option value="3">3 personnes</option><option value="4">4 personnes</option>
+              <option value="1">1 personne</option>
+              <option value="2">2 personnes</option>
+              <option value="3">3 personnes</option>
+              <option value="4">4 personnes</option>
               <option value="5">5 ou plus</option>
             </select>
           </div>
@@ -284,12 +441,12 @@ footer{background:#050d16;padding:3rem 2.5rem;text-align:center;border-top:1px s
   </div>
 </section>
 
-<!-- ══ FOOTER ══ -->
+<!-- FOOTER -->
 <footer>
   <div class="flogo">Ensemble pour la fraternité</div>
   <div class="fsub">Journée Espérance · 17 octobre 2026</div>
   <div class="fqr">
-    <img src="data:image/png;base64,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" alt="QR Code">
+    <img src="data:image/png;base64,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" alt="QR Code journee-esperence.fr">
     <span>journee-esperence.fr</span>
   </div>
 </footer>
@@ -297,21 +454,34 @@ footer{background:#050d16;padding:3rem 2.5rem;text-align:center;border-top:1px s
 <script>
 var SB='https://aiafvjhiprdldtwmktur.supabase.co';
 var KEY='eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImFpYWZ2amhpcHJkbGR0d21rdHVyIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzEwMTYzMzcsImV4cCI6MjA4NjU5MjMzN30.YP9_K6srLfHq86EsD4E-StRx_UJxwoboDz3Er4tw2yk';
-document.getElementById('frm').addEventListener('submit',async function(e){
+document.getElementById('frm').addEventListener('submit', async function(e) {
   e.preventDefault();
-  var f=e.target,b=f.querySelector('.bsub'),ab=document.getElementById('ab');
-  b.disabled=true;b.textContent='Envoi…';ab.innerHTML='';
-  var d={nom:f.nom.value.trim(),prenom:f.prenom.value.trim(),email:f.email.value.trim(),
-    telephone:f.telephone.value.trim()||null,nombre_personnes:parseInt(f.nombre_personnes.value),
-    message:f.message.value.trim()||null};
-  try{
-    var r=await fetch(SB+'/rest/v1/journee_esperance_inscriptions',{method:'POST',
+  var f=e.target, b=f.querySelector('.bsub'), ab=document.getElementById('ab');
+  b.disabled=true; b.textContent='Envoi...'; ab.innerHTML='';
+  var d={
+    nom:f.nom.value.trim(), prenom:f.prenom.value.trim(),
+    email:f.email.value.trim(), telephone:f.telephone.value.trim()||null,
+    nombre_personnes:parseInt(f.nombre_personnes.value),
+    message:f.message.value.trim()||null
+  };
+  try {
+    var r=await fetch(SB+'/rest/v1/journee_esperance_inscriptions',{
+      method:'POST',
       headers:{'Content-Type':'application/json',apikey:KEY,'Authorization':'Bearer '+KEY,'Prefer':'return=minimal'},
-      body:JSON.stringify(d)});
-    if(r.ok||r.status===201){ab.innerHTML='<div class="al ok">🎉 Inscription confirmée ! Merci et à bientôt le 17 octobre 2026.</div>';f.reset();}
-    else{var err=await r.json().catch(function(){return{}});throw new Error(err.message||'Erreur');}
-  }catch(err){ab.innerHTML='<div class="al err">❌ '+err.message+'</div>';}
-  finally{b.disabled=false;b.textContent='Confirmer mon inscription';}
+      body:JSON.stringify(d)
+    });
+    if(r.ok||r.status===201) {
+      ab.innerHTML='<div class="al ok">Inscription confirmée ! Merci et à bientôt le 17 octobre 2026.</div>';
+      f.reset();
+    } else {
+      var err=await r.json().catch(function(){return{};});
+      throw new Error(err.message||'Erreur');
+    }
+  } catch(err) {
+    ab.innerHTML='<div class="al err">'+err.message+'</div>';
+  } finally {
+    b.disabled=false; b.textContent='Confirmer mon inscription';
+  }
 });
 </script>
 </body>
