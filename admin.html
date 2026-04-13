@@ -5,543 +5,259 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Admin — Journée Espérance</title>
 <style>
-*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-body {
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-  background: #0d1b2a;
-  color: #ffffff;
-  min-height: 100vh;
-}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;background:#0d1b2a;color:#fff;min-height:100vh}
+#login{min-height:100vh;display:flex;align-items:center;justify-content:center;padding:2rem}
+.card{background:#1a2744;border:1px solid rgba(201,162,39,.2);border-radius:16px;padding:3rem 2.5rem;width:100%;max-width:400px;text-align:center}
+.eyebrow{font-size:.7rem;letter-spacing:.25em;text-transform:uppercase;color:#c9a227;margin-bottom:2rem}
+h1{font-size:1.4rem;font-weight:600;margin-bottom:.4rem}
+.sub{font-size:.85rem;color:#a0aab8;margin-bottom:2.5rem}
+.pwd-wrap{position:relative;margin-bottom:1rem}
+.pwd-wrap input{width:100%;padding:.9rem 2.8rem .9rem 1.1rem;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.15);border-radius:8px;color:#fff;font-size:1rem;text-align:center;letter-spacing:.1em;outline:none;transition:border-color .2s}
+.pwd-wrap input:focus{border-color:#c9a227}
+.toggle-pwd{position:absolute;right:.9rem;top:50%;transform:translateY(-50%);background:none;border:none;color:#a0aab8;cursor:pointer;font-size:18px;padding:0;line-height:1}
+.btn-login{width:100%;padding:.9rem;background:#c9a227;color:#0d1b2a;border:none;border-radius:8px;font-size:.95rem;font-weight:700;cursor:pointer;transition:background .2s}
+.btn-login:hover{background:#e8c547}
+.err{margin-top:1rem;padding:.7rem 1rem;background:rgba(239,68,68,.15);border:1px solid rgba(239,68,68,.3);border-radius:6px;color:#fca5a5;font-size:.85rem;display:none}
+.err.show{display:block}
 
-/* ── LOGIN ── */
-#login-screen {
-  min-height: 100vh;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 2rem;
-}
-.login-card {
-  background: #1a2744;
-  border: 1px solid rgba(201,162,39,.2);
-  border-radius: 16px;
-  padding: 3rem 2.5rem;
-  width: 100%;
-  max-width: 380px;
-  text-align: center;
-}
-.login-logo {
-  font-size: .7rem;
-  letter-spacing: .25em;
-  text-transform: uppercase;
-  color: #c9a227;
-  margin-bottom: 2rem;
-}
-.login-title {
-  font-size: 1.4rem;
-  font-weight: 600;
-  color: #ffffff;
-  margin-bottom: .5rem;
-}
-.login-sub {
-  font-size: .85rem;
-  color: #a0aab8;
-  margin-bottom: 2rem;
-}
-.login-card input[type="password"] {
-  width: 100%;
-  padding: .85rem 1.1rem;
-  background: rgba(255,255,255,.05);
-  border: 1px solid rgba(255,255,255,.15);
-  border-radius: 8px;
-  color: #ffffff;
-  font-size: 1rem;
-  text-align: center;
-  letter-spacing: .15em;
-  outline: none;
-  margin-bottom: 1rem;
-  transition: border-color .2s;
-}
-.login-card input[type="password"]:focus {
-  border-color: #c9a227;
-}
-.login-btn {
-  width: 100%;
-  padding: .85rem;
-  background: #c9a227;
-  color: #0d1b2a;
-  border: none;
-  border-radius: 8px;
-  font-size: .95rem;
-  font-weight: 700;
-  cursor: pointer;
-  transition: background .2s;
-}
-.login-btn:hover { background: #e8c547; }
-.login-err {
-  margin-top: 1rem;
-  font-size: .85rem;
-  color: #fca5a5;
-  display: none;
-}
-
-/* ── DASHBOARD ── */
-#dashboard { display: none; }
-
-.topbar {
-  background: #111e2e;
-  border-bottom: 1px solid rgba(255,255,255,.06);
-  padding: 1rem 2rem;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 1rem;
-  flex-wrap: wrap;
-  position: sticky;
-  top: 0;
-  z-index: 10;
-}
-.topbar-left .title {
-  font-size: 1rem;
-  font-weight: 600;
-  color: #ffffff;
-}
-.topbar-left .sub {
-  font-size: .75rem;
-  color: #a0aab8;
-  margin-top: 2px;
-}
-.topbar-right {
-  display: flex;
-  gap: .75rem;
-  align-items: center;
-  flex-wrap: wrap;
-}
-
-.btn {
-  height: 36px;
-  padding: 0 16px;
-  border-radius: 7px;
-  border: 1px solid rgba(255,255,255,.12);
-  background: transparent;
-  color: #ffffff;
-  font-size: .82rem;
-  cursor: pointer;
-  transition: background .2s;
-  white-space: nowrap;
-}
-.btn:hover { background: rgba(255,255,255,.06); }
-.btn-gold {
-  background: #c9a227;
-  color: #0d1b2a;
-  border-color: transparent;
-  font-weight: 600;
-}
-.btn-gold:hover { background: #e8c547; }
-.btn-logout {
-  color: #a0aab8;
-  border-color: transparent;
-}
-
-.main { padding: 2rem; max-width: 1200px; margin: 0 auto; }
-
-/* ── STATS ── */
-.stats {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-  gap: 1rem;
-  margin-bottom: 2rem;
-}
-.stat-card {
-  background: #1a2744;
-  border: 1px solid rgba(201,162,39,.12);
-  border-radius: 12px;
-  padding: 1.3rem 1.5rem;
-}
-.stat-val {
-  font-size: 2.2rem;
-  font-weight: 700;
-  color: #e8c547;
-  line-height: 1;
-  margin-bottom: .3rem;
-}
-.stat-lbl {
-  font-size: .72rem;
-  letter-spacing: .1em;
-  text-transform: uppercase;
-  color: #a0aab8;
-}
-
-/* ── TOOLBAR ── */
-.toolbar {
-  display: flex;
-  gap: .75rem;
-  margin-bottom: 1rem;
-  flex-wrap: wrap;
-  align-items: center;
-}
-.search-wrap {
-  position: relative;
-  flex: 1;
-  min-width: 200px;
-}
-.search-wrap input {
-  width: 100%;
-  height: 38px;
-  padding: 0 12px 0 36px;
-  background: #1a2744;
-  border: 1px solid rgba(255,255,255,.1);
-  border-radius: 8px;
-  color: #ffffff;
-  font-size: .9rem;
-  outline: none;
-  transition: border-color .2s;
-}
-.search-wrap input:focus { border-color: #c9a227; }
-.search-wrap::before {
-  content: '🔍';
-  position: absolute;
-  left: 10px;
-  top: 50%;
-  transform: translateY(-50%);
-  font-size: 14px;
-  pointer-events: none;
-}
-
-/* ── TABLE ── */
-.table-card {
-  background: #111e2e;
-  border: 1px solid rgba(255,255,255,.06);
-  border-radius: 12px;
-  overflow: hidden;
-}
-.table-wrap { overflow-x: auto; }
-table {
-  width: 100%;
-  border-collapse: collapse;
-  font-size: .85rem;
-}
-thead th {
-  padding: .75rem 1rem;
-  text-align: left;
-  font-size: .68rem;
-  font-weight: 600;
-  letter-spacing: .1em;
-  text-transform: uppercase;
-  color: #a0aab8;
-  background: rgba(255,255,255,.02);
-  border-bottom: 1px solid rgba(255,255,255,.06);
-  cursor: pointer;
-  user-select: none;
-  white-space: nowrap;
-}
-thead th:hover { color: #c9a227; }
-thead th.sorted { color: #c9a227; }
-tbody tr {
-  border-bottom: 1px solid rgba(255,255,255,.04);
-  transition: background .15s;
-}
-tbody tr:last-child { border-bottom: none; }
-tbody tr:hover { background: rgba(255,255,255,.03); }
-td {
-  padding: .85rem 1rem;
-  color: #d0d8e8;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  max-width: 200px;
-}
-td.name { font-weight: 600; color: #ffffff; max-width: 140px; }
-td.email { color: #a0aab8; max-width: 200px; }
-td.date { font-size: .78rem; color: #6b7a99; max-width: 130px; }
-td.msg { color: #8899b8; font-style: italic; }
-.badge-nb {
-  display: inline-block;
-  background: rgba(201,162,39,.15);
-  color: #c9a227;
-  font-size: .75rem;
-  font-weight: 600;
-  padding: 2px 10px;
-  border-radius: 99px;
-  border: 1px solid rgba(201,162,39,.25);
-}
-
-.empty, .loading-row {
-  text-align: center;
-  padding: 3rem;
-  color: #6b7a99;
-  font-size: .9rem;
-}
-.err-banner {
-  background: rgba(239,68,68,.1);
-  border: 1px solid rgba(239,68,68,.25);
-  border-radius: 8px;
-  padding: .9rem 1.2rem;
-  color: #fca5a5;
-  font-size: .85rem;
-  margin-bottom: 1rem;
-  display: none;
-}
-.count-info {
-  font-size: .78rem;
-  color: #6b7a99;
-  margin-bottom: .75rem;
-}
-
-/* ── REFRESH INDICATOR ── */
-.last-refresh {
-  font-size: .72rem;
-  color: #6b7a99;
-  margin-top: .75rem;
-  text-align: right;
-}
-
-@media(max-width: 600px) {
-  .main { padding: 1rem; }
-  .topbar { padding: 1rem; }
-}
+/* Dashboard */
+#dash{display:none}
+.topbar{background:#111e2e;border-bottom:1px solid rgba(255,255,255,.06);padding:1rem 2rem;display:flex;align-items:center;justify-content:space-between;gap:1rem;flex-wrap:wrap;position:sticky;top:0;z-index:10}
+.topbar h2{font-size:1rem;font-weight:600}
+.topbar .sub2{font-size:.75rem;color:#a0aab8;margin-top:2px}
+.top-btns{display:flex;gap:.75rem;flex-wrap:wrap}
+.btn{height:36px;padding:0 16px;border-radius:7px;border:1px solid rgba(255,255,255,.12);background:transparent;color:#fff;font-size:.82rem;cursor:pointer;transition:background .2s;white-space:nowrap}
+.btn:hover{background:rgba(255,255,255,.06)}
+.btn-gold{background:#c9a227;color:#0d1b2a;border-color:transparent;font-weight:600}
+.btn-gold:hover{background:#e8c547}
+.btn-out{color:#a0aab8;border-color:transparent}
+.main{padding:2rem;max-width:1200px;margin:0 auto}
+.stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:1rem;margin-bottom:2rem}
+.stat{background:#1a2744;border:1px solid rgba(201,162,39,.12);border-radius:12px;padding:1.3rem 1.5rem}
+.stat .v{font-size:2.2rem;font-weight:700;color:#e8c547;line-height:1;margin-bottom:.3rem}
+.stat .l{font-size:.7rem;letter-spacing:.1em;text-transform:uppercase;color:#a0aab8}
+.toolbar{display:flex;gap:.75rem;margin-bottom:1rem;flex-wrap:wrap;align-items:center}
+.srch{flex:1;min-width:200px;position:relative}
+.srch input{width:100%;height:38px;padding:0 12px 0 34px;background:#1a2744;border:1px solid rgba(255,255,255,.1);border-radius:8px;color:#fff;font-size:.9rem;outline:none;transition:border-color .2s}
+.srch input:focus{border-color:#c9a227}
+.srch::before{content:'⌕';position:absolute;left:10px;top:50%;transform:translateY(-50%);color:#a0aab8;font-size:16px;pointer-events:none}
+.tcard{background:#111e2e;border:1px solid rgba(255,255,255,.06);border-radius:12px;overflow:hidden}
+.twrap{overflow-x:auto}
+table{width:100%;border-collapse:collapse;font-size:.85rem}
+thead th{padding:.75rem 1rem;text-align:left;font-size:.68rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:#a0aab8;background:rgba(255,255,255,.02);border-bottom:1px solid rgba(255,255,255,.06);cursor:pointer;white-space:nowrap;user-select:none}
+thead th:hover{color:#c9a227}
+thead th.s{color:#c9a227}
+tbody tr{border-bottom:1px solid rgba(255,255,255,.04);transition:background .15s}
+tbody tr:last-child{border-bottom:none}
+tbody tr:hover td{background:rgba(255,255,255,.03)}
+td{padding:.85rem 1rem;color:#d0d8e8;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:200px}
+td.nm{font-weight:600;color:#fff;max-width:130px}
+td.em{color:#a0aab8;max-width:200px}
+td.dt{font-size:.78rem;color:#6b7a99;max-width:140px}
+td.msg{color:#8899b8;font-style:italic}
+.nb{display:inline-block;background:rgba(201,162,39,.15);color:#c9a227;font-size:.75rem;font-weight:600;padding:2px 10px;border-radius:99px;border:1px solid rgba(201,162,39,.25)}
+.empty,.loading{text-align:center;padding:3rem;color:#6b7a99;font-size:.9rem}
+.errb{background:rgba(239,68,68,.1);border:1px solid rgba(239,68,68,.25);border-radius:8px;padding:.9rem 1.2rem;color:#fca5a5;font-size:.85rem;margin-bottom:1rem;display:none}
+.info{font-size:.78rem;color:#6b7a99;margin-bottom:.75rem}
+.lr{font-size:.72rem;color:#6b7a99;margin-top:.75rem;text-align:right}
+@media(max-width:600px){.main{padding:1rem}.topbar{padding:1rem}}
 </style>
 </head>
 <body>
 
-<!-- ══ LOGIN ══ -->
-<div id="login-screen">
-  <div class="login-card">
-    <div class="login-logo">Ensemble pour la fraternité</div>
-    <div class="login-title">Espace administration</div>
-    <div class="login-sub">Journée Espérance · 17 octobre 2026</div>
-    <input type="password" id="pwd-input" placeholder="Mot de passe" onkeydown="if(event.key==='Enter')doLogin()">
-    <button class="login-btn" onclick="doLogin()">Accéder au tableau de bord</button>
-    <div class="login-err" id="login-err">Mot de passe incorrect.</div>
+<div id="login">
+  <div class="card">
+    <div class="eyebrow">Ensemble pour la fraternité</div>
+    <h1>Espace administration</h1>
+    <p class="sub">Journée Espérance · 17 octobre 2026</p>
+    <div class="pwd-wrap">
+      <input type="password" id="pwd" placeholder="Mot de passe" autocomplete="off"
+             onkeydown="if(event.key==='Enter')login()">
+      <button class="toggle-pwd" onclick="togglePwd()" title="Afficher/masquer">👁</button>
+    </div>
+    <button class="btn-login" onclick="login()">Accéder au tableau de bord</button>
+    <div class="err" id="err">Mot de passe incorrect. Réessayez.</div>
   </div>
 </div>
 
-<!-- ══ DASHBOARD ══ -->
-<div id="dashboard">
+<div id="dash">
   <div class="topbar">
-    <div class="topbar-left">
-      <div class="title">Tableau de bord · Inscriptions</div>
-      <div class="sub" id="topbar-sub">Journée Espérance — 17 octobre 2026</div>
+    <div>
+      <h2>Inscriptions — Journée Espérance</h2>
+      <div class="sub2">17 octobre 2026 · Ensemble pour la fraternité</div>
     </div>
-    <div class="topbar-right">
+    <div class="top-btns">
       <button class="btn btn-gold" onclick="loadData()">⟳ Actualiser</button>
-      <button class="btn" onclick="exportCSV()">↓ Exporter CSV</button>
-      <button class="btn btn-logout" onclick="logout()">Déconnexion</button>
+      <button class="btn" onclick="exportCSV()">↓ CSV</button>
+      <button class="btn btn-out" onclick="logout()">Déconnexion</button>
     </div>
   </div>
-
   <div class="main">
     <div class="stats">
-      <div class="stat-card">
-        <div class="stat-val" id="s-total">—</div>
-        <div class="stat-lbl">Familles inscrites</div>
-      </div>
-      <div class="stat-card">
-        <div class="stat-val" id="s-personnes">—</div>
-        <div class="stat-lbl">Personnes attendues</div>
-      </div>
-      <div class="stat-card">
-        <div class="stat-val" id="s-today">—</div>
-        <div class="stat-lbl">Inscriptions aujourd'hui</div>
-      </div>
-      <div class="stat-card">
-        <div class="stat-val" id="s-week">—</div>
-        <div class="stat-lbl">Cette semaine</div>
-      </div>
+      <div class="stat"><div class="v" id="s1">—</div><div class="l">Inscrits</div></div>
+      <div class="stat"><div class="v" id="s2">—</div><div class="l">Personnes</div></div>
+      <div class="stat"><div class="v" id="s3">—</div><div class="l">Aujourd'hui</div></div>
+      <div class="stat"><div class="v" id="s4">—</div><div class="l">Cette semaine</div></div>
     </div>
-
-    <div id="err-banner" class="err-banner"></div>
-
+    <div id="errb" class="errb"></div>
     <div class="toolbar">
-      <div class="search-wrap">
-        <input type="search" id="search" placeholder="Rechercher nom, prénom, email, téléphone..." oninput="renderTable()">
-      </div>
-      <button class="btn" onclick="sortBy('created_at')">Date ↕</button>
-      <button class="btn" onclick="sortBy('nom')">Nom ↕</button>
-      <button class="btn" onclick="sortBy('nombre_personnes')">Personnes ↕</button>
+      <div class="srch"><input type="search" id="q" placeholder="Nom, email, téléphone..." oninput="render()"></div>
+      <button class="btn" onclick="sort('created_at')">Date ↕</button>
+      <button class="btn" onclick="sort('nom')">Nom ↕</button>
     </div>
-
-    <div class="count-info" id="count-info"></div>
-
-    <div class="table-card">
-      <div class="table-wrap">
-        <table>
-          <thead>
-            <tr>
-              <th onclick="sortBy('created_at')" id="th-created_at">Date inscription ↕</th>
-              <th onclick="sortBy('prenom')" id="th-prenom">Prénom ↕</th>
-              <th onclick="sortBy('nom')" id="th-nom">Nom ↕</th>
-              <th onclick="sortBy('email')" id="th-email">Email ↕</th>
-              <th>Téléphone</th>
-              <th onclick="sortBy('nombre_personnes')" id="th-nombre_personnes">Pers. ↕</th>
-              <th>Message</th>
-            </tr>
-          </thead>
-          <tbody id="tbody">
-            <tr><td colspan="7" class="loading-row">Chargement des inscriptions...</td></tr>
-          </tbody>
-        </table>
-      </div>
-    </div>
-
-    <div class="last-refresh" id="last-refresh"></div>
+    <div class="info" id="inf"></div>
+    <div class="tcard"><div class="twrap">
+      <table>
+        <thead><tr>
+          <th onclick="sort('created_at')" id="h-created_at" class="s">Date ↓</th>
+          <th onclick="sort('prenom')" id="h-prenom">Prénom ↕</th>
+          <th onclick="sort('nom')" id="h-nom">Nom ↕</th>
+          <th onclick="sort('email')" id="h-email">Email ↕</th>
+          <th>Téléphone</th>
+          <th onclick="sort('nombre_personnes')" id="h-nombre_personnes">Pers. ↕</th>
+          <th>Message</th>
+        </tr></thead>
+        <tbody id="tb"><tr><td colspan="7" class="loading">Chargement...</td></tr></tbody>
+      </table>
+    </div></div>
+    <div class="lr" id="lr"></div>
   </div>
 </div>
 
 <script>
-// ── CONFIG ──
-const SB_URL = 'https://aiafvjhiprdldtwmktur.supabase.co';
-const SB_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImFpYWZ2amhpcHJkbGR0d21rdHVyIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzEwMTYzMzcsImV4cCI6MjA4NjU5MjMzN30.YP9_K6srLfHq86EsD4E-StRx_UJxwoboDz3Er4tw2yk';
+// ── MOT DE PASSE ──
+// Pour changer le mot de passe, modifiez uniquement cette ligne :
+var PWD = 'Esperence2026';
 
-// !! Changer ce mot de passe avant de déployer !!
-const PASSWORD_HASH = 'Esperance2026';
+// ── SUPABASE ──
+var SB = 'https://aiafvjhiprdldtwmktur.supabase.co';
+var KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImFpYWZ2amhpcHJkbGR0d21rdHVyIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzEwMTYzMzcsImV4cCI6MjA4NjU5MjMzN30.YP9_K6srLfHq86EsD4E-StRx_UJxwoboDz3Er4tw2yk';
 
-// ── AUTH ──
-function doLogin() {
-  const v = document.getElementById('pwd-input').value;
-  if (v === PASSWORD_HASH) {
-    sessionStorage.setItem('auth', '1');
-    document.getElementById('login-screen').style.display = 'none';
-    document.getElementById('dashboard').style.display = 'block';
-    loadData();
+var data = [], col = 'created_at', asc = false;
+
+function login() {
+  var v = document.getElementById('pwd').value;
+  if (v === PWD) {
+    sessionStorage.setItem('ok','1');
+    show();
   } else {
-    const err = document.getElementById('login-err');
-    err.style.display = 'block';
-    document.getElementById('pwd-input').value = '';
-    document.getElementById('pwd-input').focus();
-    setTimeout(() => err.style.display = 'none', 3000);
+    var e = document.getElementById('err');
+    e.classList.add('show');
+    document.getElementById('pwd').value = '';
+    document.getElementById('pwd').focus();
+    setTimeout(function(){ e.classList.remove('show'); }, 3500);
   }
 }
 
 function logout() {
-  sessionStorage.removeItem('auth');
-  document.getElementById('login-screen').style.display = 'flex';
-  document.getElementById('dashboard').style.display = 'none';
-  document.getElementById('pwd-input').value = '';
+  sessionStorage.removeItem('ok');
+  document.getElementById('dash').style.display = 'none';
+  document.getElementById('login').style.display = 'flex';
+  document.getElementById('pwd').value = '';
 }
 
-if (sessionStorage.getItem('auth') === '1') {
-  document.getElementById('login-screen').style.display = 'none';
-  document.getElementById('dashboard').style.display = 'block';
+function show() {
+  document.getElementById('login').style.display = 'none';
+  document.getElementById('dash').style.display = 'block';
+  loadData();
 }
 
-// ── DATA ──
-let allData = [];
-let sortCol = 'created_at';
-let sortAsc = false;
+function togglePwd() {
+  var i = document.getElementById('pwd');
+  i.type = i.type === 'password' ? 'text' : 'password';
+}
+
+// Vérification session au chargement
+window.onload = function() {
+  if (sessionStorage.getItem('ok') === '1') show();
+};
 
 async function loadData() {
-  document.getElementById('tbody').innerHTML = '<tr><td colspan="7" class="loading-row">Chargement...</td></tr>';
-  hideErr();
+  document.getElementById('tb').innerHTML = '<tr><td colspan="7" class="loading">Chargement...</td></tr>';
+  document.getElementById('errb').style.display = 'none';
   try {
-    const res = await fetch(SB_URL + '/rest/v1/journee_esperance_inscriptions?select=*&order=created_at.desc&limit=500', {
-      headers: { apikey: SB_KEY, Authorization: 'Bearer ' + SB_KEY }
+    var r = await fetch(SB+'/rest/v1/journee_esperance_inscriptions?select=*&order=created_at.desc&limit=500', {
+      headers:{apikey:KEY,'Authorization':'Bearer '+KEY}
     });
-    if (!res.ok) throw new Error('Erreur HTTP ' + res.status);
-    allData = await res.json();
+    if (!r.ok) throw new Error('HTTP '+r.status);
+    data = await r.json();
     updateStats();
-    renderTable();
-    document.getElementById('last-refresh').textContent =
-      'Actualisé à ' + new Date().toLocaleTimeString('fr-FR');
+    render();
+    document.getElementById('lr').textContent = 'Actualisé à '+new Date().toLocaleTimeString('fr-FR');
   } catch(e) {
-    showErr('Impossible de charger les données : ' + e.message);
-    document.getElementById('tbody').innerHTML = '<tr><td colspan="7" class="empty">Erreur de chargement.</td></tr>';
+    var eb = document.getElementById('errb');
+    eb.textContent = 'Erreur : '+e.message;
+    eb.style.display = 'block';
+    document.getElementById('tb').innerHTML = '<tr><td colspan="7" class="empty">Erreur de chargement.</td></tr>';
   }
 }
 
 function updateStats() {
-  const today = new Date().toISOString().slice(0,10);
-  const weekAgo = new Date(Date.now() - 7*24*60*60*1000).toISOString();
-  const todayCount = allData.filter(r => r.created_at && r.created_at.slice(0,10) === today).length;
-  const weekCount = allData.filter(r => r.created_at && r.created_at >= weekAgo).length;
-  const totalPers = allData.reduce((s,r) => s + (parseInt(r.nombre_personnes)||1), 0);
-  document.getElementById('s-total').textContent = allData.length;
-  document.getElementById('s-personnes').textContent = totalPers;
-  document.getElementById('s-today').textContent = todayCount;
-  document.getElementById('s-week').textContent = weekCount;
+  var today = new Date().toISOString().slice(0,10);
+  var w = new Date(Date.now()-7*864e5).toISOString();
+  document.getElementById('s1').textContent = data.length;
+  document.getElementById('s2').textContent = data.reduce(function(s,r){return s+(parseInt(r.nombre_personnes)||1);},0);
+  document.getElementById('s3').textContent = data.filter(function(r){return r.created_at&&r.created_at.slice(0,10)===today;}).length;
+  document.getElementById('s4').textContent = data.filter(function(r){return r.created_at&&r.created_at>=w;}).length;
 }
 
-function sortBy(col) {
-  if (sortCol === col) sortAsc = !sortAsc;
-  else { sortCol = col; sortAsc = true; }
-  renderTable();
+function sort(c) {
+  if (col===c) asc=!asc; else {col=c;asc=true;}
+  document.querySelectorAll('thead th').forEach(function(th){th.classList.remove('s');th.textContent=th.textContent.replace(/ [↑↓]$/,'');});
+  var h=document.getElementById('h-'+c);
+  if(h){h.classList.add('s');h.textContent=h.textContent.replace(/ [↑↓↕]$/,'')+(asc?' ↑':' ↓');}
+  render();
 }
 
-function getFiltered() {
-  const q = (document.getElementById('search').value || '').toLowerCase().trim();
-  if (!q) return [...allData];
-  return allData.filter(r =>
-    [r.nom, r.prenom, r.email, r.telephone, r.message]
-      .some(v => v && String(v).toLowerCase().includes(q))
-  );
+function filtered() {
+  var q=(document.getElementById('q').value||'').toLowerCase().trim();
+  if(!q) return data.slice();
+  return data.filter(function(r){return [r.nom,r.prenom,r.email,r.telephone,r.message].some(function(v){return v&&String(v).toLowerCase().includes(q);});});
 }
 
-function renderTable() {
-  const data = getFiltered();
-  data.sort((a, b) => {
-    let av = a[sortCol] ?? '', bv = b[sortCol] ?? '';
-    if (sortCol === 'nombre_personnes') { av = +av||0; bv = +bv||0; }
-    return (av < bv ? -1 : av > bv ? 1 : 0) * (sortAsc ? 1 : -1);
+function render() {
+  var rows=filtered();
+  rows.sort(function(a,b){
+    var av=a[col]??'',bv=b[col]??'';
+    if(col==='nombre_personnes'){av=+av||0;bv=+bv||0;}
+    return (av<bv?-1:av>bv?1:0)*(asc?1:-1);
   });
-
-  const q = document.getElementById('search').value.trim();
-  document.getElementById('count-info').textContent =
-    q ? data.length + ' résultat(s) pour "' + q + '"' :
-    data.length + ' inscription(s) au total';
-
-  const tbody = document.getElementById('tbody');
-  if (!data.length) {
-    tbody.innerHTML = '<tr><td colspan="7" class="empty">Aucun inscrit trouvé.</td></tr>';
-    return;
-  }
-  tbody.innerHTML = data.map(r => {
-    const d = r.created_at ? new Date(r.created_at) : null;
-    const dateStr = d ? d.toLocaleDateString('fr-FR', {day:'2-digit',month:'2-digit',year:'2-digit'}) + ' ' + d.toLocaleTimeString('fr-FR',{hour:'2-digit',minute:'2-digit'}) : '—';
-    return '<tr>' +
-      '<td class="date">' + esc(dateStr) + '</td>' +
-      '<td class="name">' + esc(r.prenom||'—') + '</td>' +
-      '<td class="name">' + esc(r.nom||'—') + '</td>' +
-      '<td class="email">' + esc(r.email||'—') + '</td>' +
-      '<td>' + esc(r.telephone||'—') + '</td>' +
-      '<td><span class="badge-nb">' + (r.nombre_personnes||1) + '</span></td>' +
-      '<td class="msg">' + esc(r.message||'') + '</td>' +
+  document.getElementById('inf').textContent = rows.length+' inscription(s)';
+  if(!rows.length){document.getElementById('tb').innerHTML='<tr><td colspan="7" class="empty">Aucun résultat.</td></tr>';return;}
+  document.getElementById('tb').innerHTML=rows.map(function(r){
+    var d=r.created_at?new Date(r.created_at):null;
+    var ds=d?d.toLocaleDateString('fr-FR',{day:'2-digit',month:'2-digit',year:'2-digit'})+' '+d.toLocaleTimeString('fr-FR',{hour:'2-digit',minute:'2-digit'}):'—';
+    return '<tr>'+
+      '<td class="dt">'+e(ds)+'</td>'+
+      '<td class="nm">'+e(r.prenom||'—')+'</td>'+
+      '<td class="nm">'+e(r.nom||'—')+'</td>'+
+      '<td class="em">'+e(r.email||'—')+'</td>'+
+      '<td>'+e(r.telephone||'—')+'</td>'+
+      '<td><span class="nb">'+(r.nombre_personnes||1)+'</span></td>'+
+      '<td class="msg">'+e(r.message||'')+'</td>'+
       '</tr>';
   }).join('');
 }
 
-function esc(s) {
-  return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
-}
+function e(s){return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');}
 
 function exportCSV() {
-  const data = getFiltered();
-  const header = ['Date inscription','Prénom','Nom','Email','Téléphone','Nb personnes','Message'];
-  const rows = data.map(r => [
-    r.created_at ? new Date(r.created_at).toLocaleString('fr-FR') : '',
-    r.prenom||'', r.nom||'', r.email||'', r.telephone||'',
-    r.nombre_personnes||1, r.message||''
-  ].map(v => '"' + String(v).replace(/"/g,'""') + '"').join(','));
-  const csv = '﻿' + [header.join(','), ...rows].join('
+  var rows=filtered();
+  var h=['Date','Prénom','Nom','Email','Téléphone','Personnes','Message'].join(',');
+  var body=rows.map(function(r){
+    return [r.created_at?new Date(r.created_at).toLocaleString('fr-FR'):'',r.prenom||'',r.nom||'',r.email||'',r.telephone||'',r.nombre_personnes||1,r.message||'']
+      .map(function(v){return '"'+String(v).replace(/"/g,'""')+'"';}).join(',');
+  }).join('
 ');
-  const a = document.createElement('a');
-  a.href = 'data:text/csv;charset=utf-8,' + encodeURIComponent(csv);
-  a.download = 'inscrits-journee-esperence-' + new Date().toISOString().slice(0,10) + '.csv';
+  var a=document.createElement('a');
+  a.href='data:text/csv;charset=utf-8,﻿'+encodeURIComponent(h+'
+'+body);
+  a.download='inscrits-'+new Date().toISOString().slice(0,10)+'.csv';
   a.click();
 }
 
-function showErr(msg) {
-  const el = document.getElementById('err-banner');
-  el.textContent = msg;
-  el.style.display = 'block';
-}
-function hideErr() {
-  document.getElementById('err-banner').style.display = 'none';
-}
-
-// Auto-refresh toutes les 5 minutes
-setInterval(() => {
-  if (sessionStorage.getItem('auth') === '1') loadData();
-}, 5 * 60 * 1000);
+setInterval(function(){if(sessionStorage.getItem('ok')==='1')loadData();},5*60*1000);
 </script>
 </body>
 </html>
