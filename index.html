@@ -2,440 +2,459 @@
 <html lang="fr">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Journée Espérance — 17 Octobre 2026</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Journée Espérance - Samedi 24 octobre 2026</title>
+<meta name="description" content="Journée Espérance - samedi 24 octobre 2026, de 11h à 16h. Rencontres, déjeuner partagé, témoignages et activités enfants. Entrée libre et gratuite.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600;9..144,700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
-/* ── RESET ── */
-*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-html { scroll-behavior: smooth; }
-body { font-family: Georgia, serif; background: #0d1b2a; color: #fff; overflow-x: hidden; }
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --cream:#FFFBF4;
+  --sand:#F6EEE0;
+  --ink:#1D2B3A;
+  --ink-soft:#5A6B7C;
+  --gold:#C08A1E;
+  --gold-deep:#8A6A12;
+  --coral:#E2674A;
+  --leaf:#4C8C6B;
+  --sky:#3B7EA1;
+  --line:rgba(29,43,58,.10);
+  --shadow:0 18px 50px rgba(29,43,58,.10);
+  --radius:18px;
+  font-size:16px;
+}
+html{scroll-behavior:smooth}
+body{
+  font-family:'Inter',system-ui,sans-serif;
+  background:var(--cream);
+  color:var(--ink);
+  line-height:1.65;
+  overflow-x:hidden;
+  padding-top:env(safe-area-inset-top,0px);
+  padding-bottom:env(safe-area-inset-bottom,0px);
+}
+h1,h2,h3,.serif{font-family:'Fraunces',Georgia,serif}
+img{max-width:100%;display:block}
+.wrap{max-width:1140px;margin:0 auto;padding:0 clamp(1.2rem,4vw,2.5rem)}
 
-/* ── VARIABLES ── */
-:root {
-  --gold: #c9a227;
-  --gold-l: #e8c547;
-  --navy: #1a2744;
-  --dark: #0d1b2a;
-  --darker: #08111c;
-  --muted: #a0aab8;
-  --text: #b8c8dd;
-  --cream: #f5f0e8;
-}
-
-/* ══════════════════════════════════════
-   HERO — 2 colonnes, texte + photo
-══════════════════════════════════════ */
-.hero-wrap {
-  background: var(--dark);
-  border-bottom: 1px solid rgba(201,162,39,.08);
-}
-.hero {
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 5rem 2.5rem;
-  display: grid;
-  grid-template-columns: 1fr 480px;
-  gap: 5rem;
-  align-items: center;
-}
-@media(max-width:900px) {
-  .hero { grid-template-columns: 1fr; gap: 3rem; padding: 4rem 1.5rem; }
-}
-
-.hero-eyebrow {
-  display: inline-flex; align-items: center; gap: 10px;
-  font-size: .68rem; letter-spacing: .3em; text-transform: uppercase;
-  color: var(--gold); margin-bottom: 2rem;
-}
-.hero-eyebrow::before {
-  content: '◆'; font-size: 8px; color: var(--gold); line-height: 1.8;
-}
-.hero-title {
-  font-size: clamp(3.5rem, 6vw, 6rem);
-  font-weight: 700; line-height: .92; letter-spacing: -.02em;
-  color: var(--gold-l); margin-bottom: .15rem;
-}
-.hero-sub {
-  font-size: clamp(2rem, 3.5vw, 3.8rem);
-  font-weight: 900; letter-spacing: .1em; text-transform: uppercase;
-  color: #fff; margin-bottom: 2.5rem;
-}
-.hero-dates {
-  display: flex; flex-direction: column; gap: .55rem; margin-bottom: 2.8rem;
-}
-.hero-date {
-  display: flex; align-items: center; gap: .8rem;
-  font-size: .9rem; color: rgba(255,255,255,.6);
-}
-.hero-date strong { color: var(--gold); }
-.hero-date::before {
-  content: '◆'; font-size: 6px; color: rgba(201,162,39,.5); flex-shrink: 0;
-}
-.hero-desc {
-  font-size: .95rem; line-height: 1.8; color: #6b7a99;
-  max-width: 400px; font-style: italic; margin-bottom: 3rem;
-}
-.cta {
-  display: inline-flex; align-items: center; gap: .6rem;
-  background: var(--gold); color: var(--dark);
-  font-family: Georgia, serif; font-weight: 700;
-  font-size: .95rem; letter-spacing: .05em;
-  padding: .9rem 2.4rem; border-radius: 3px;
-  text-decoration: none; transition: background .2s, transform .2s;
-}
-.cta:hover { background: var(--gold-l); transform: translateX(3px); }
-.cta::after { content: '→'; }
-
-/* Photo */
-.hero-photo { position: relative; }
-.photo-frame {
-  border-radius: 8px; overflow: hidden;
-  aspect-ratio: 1618 / 1537;
-  max-height: 520px;
-  border: 1px solid rgba(201,162,39,.15);
-  box-shadow: 0 30px 80px rgba(0,0,0,.5);
-}
-.photo-frame img {
-  width: 100%; height: 100%;
-  object-fit: cover; object-position: center center; display: block;
-}
-.photo-deco {
-  position: absolute; bottom: -12px; right: -12px;
-  width: 80%; height: 80%;
-  border: 1px solid rgba(201,162,39,.18);
-  border-radius: 8px; pointer-events: none; z-index: -1;
+/* ---------- RUBAN HAUT ---------- */
+.ribbon{
+  background:linear-gradient(90deg,var(--gold) 0%,#E8A93B 45%,var(--coral) 100%);
+  color:#fff;text-align:center;
+  font-size:.82rem;font-weight:600;letter-spacing:.06em;
+  padding:.6rem 1rem;
 }
 
-/* ══════════════════════════════════════
-   CITATION
-══════════════════════════════════════ */
-.quote-band {
-  background: var(--navy); padding: 4.5rem 0;
-  border-top: 1px solid rgba(201,162,39,.1);
-  border-bottom: 1px solid rgba(201,162,39,.1);
+/* ---------- HERO ---------- */
+.hero{
+  background:
+    radial-gradient(900px 480px at 85% -10%, #FFE9BE 0%, transparent 62%),
+    radial-gradient(700px 420px at 5% 110%, #FFDCCF 0%, transparent 60%),
+    var(--cream);
+  padding:clamp(2.6rem,6vw,4.6rem) 0 clamp(2.6rem,6vw,4.2rem);
 }
-.quote-band blockquote {
-  max-width: 700px; margin: 0 auto; text-align: center;
-  font-style: italic; font-size: clamp(1.3rem, 2.5vw, 1.9rem);
-  line-height: 1.55; color: var(--cream); padding: 0 2rem;
+.hero-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:clamp(2rem,5vw,4rem);align-items:center}
+@media(max-width:900px){.hero-grid{grid-template-columns:1fr;gap:2.2rem}}
+
+.kicker{
+  display:inline-flex;align-items:center;gap:.55rem;
+  background:#fff;border:1px solid var(--line);
+  border-radius:99px;padding:.42rem 1rem;
+  font-size:.72rem;font-weight:700;letter-spacing:.16em;text-transform:uppercase;
+  color:var(--gold-deep);box-shadow:0 4px 14px rgba(29,43,58,.05);
+  margin-bottom:1.4rem;
 }
-.quote-band blockquote::before,
-.quote-band blockquote::after {
-  content: ''; display: block; width: 36px; height: 2px;
-  background: var(--gold); margin: 1.3rem auto;
+.kicker span{width:7px;height:7px;border-radius:50%;background:var(--coral)}
+
+h1{font-size:clamp(2.9rem,7.2vw,5rem);line-height:.98;font-weight:700;letter-spacing:-.025em}
+h1 .l1{display:block;color:var(--gold-deep)}
+h1 .l2{display:block;color:var(--ink)}
+.lead{font-size:clamp(1rem,1.9vw,1.12rem);color:var(--ink-soft);max-width:30rem;margin:1.3rem 0 1.9rem}
+
+.facts{display:flex;flex-wrap:wrap;gap:.6rem;margin-bottom:2rem}
+.fact{
+  display:inline-flex;align-items:center;gap:.5rem;
+  background:#fff;border:1px solid var(--line);border-radius:12px;
+  padding:.6rem .95rem;font-size:.9rem;font-weight:600;
+  box-shadow:0 3px 10px rgba(29,43,58,.04);
+}
+.fact b{color:var(--gold-deep);font-weight:700}
+
+.actions{display:flex;flex-wrap:wrap;gap:.8rem;align-items:center}
+.btn{
+  display:inline-flex;align-items:center;gap:.5rem;
+  background:var(--coral);color:#fff;
+  font-weight:700;font-size:1rem;
+  padding:.95rem 2rem;border-radius:99px;border:none;cursor:pointer;
+  text-decoration:none;font-family:inherit;
+  box-shadow:0 10px 24px rgba(226,103,74,.3);
+  transition:transform .18s,box-shadow .18s,background .18s;
+}
+.btn:hover{transform:translateY(-2px);background:#D4583B;box-shadow:0 14px 30px rgba(226,103,74,.36)}
+.btn-ghost{
+  background:#fff;color:var(--ink);border:1px solid var(--line);
+  box-shadow:0 3px 10px rgba(29,43,58,.05);
+}
+.btn-ghost:hover{background:var(--sand);transform:translateY(-2px);box-shadow:0 8px 18px rgba(29,43,58,.08)}
+
+.photo{position:relative}
+.photo img{
+  width:100%;aspect-ratio:1618/1537;object-fit:cover;
+  border-radius:22px;border:6px solid #fff;
+  box-shadow:var(--shadow);
+}
+.photo::after{
+  content:'';position:absolute;inset:auto -14px -14px auto;
+  width:62%;height:62%;border:2px solid rgba(192,138,30,.28);
+  border-radius:22px;z-index:-1;
+}
+.badge{
+  position:absolute;left:-10px;bottom:22px;
+  background:#fff;border-radius:14px;padding:.75rem 1.1rem;
+  box-shadow:var(--shadow);border:1px solid var(--line);
+  font-size:.82rem;font-weight:700;line-height:1.3;
+}
+.badge em{display:block;font-style:normal;color:var(--coral);font-size:1.35rem;font-family:'Fraunces',serif}
+@media(max-width:560px){.badge{left:6px;bottom:12px;font-size:.76rem}}
+
+/* ---------- BANDEAU CITATION ---------- */
+.quote{
+  background:linear-gradient(180deg,#FFF6E4 0%,#FFF1E9 100%);
+  border-top:1px solid var(--line);border-bottom:1px solid var(--line);
+  padding:clamp(2.6rem,6vw,4rem) 0;text-align:center;
+}
+.quote p{
+  font-family:'Fraunces',serif;font-style:italic;
+  font-size:clamp(1.35rem,3.4vw,2.1rem);line-height:1.4;
+  color:var(--gold-deep);max-width:38rem;margin:0 auto;
+}
+.quote .dots{display:flex;gap:.45rem;justify-content:center;margin-bottom:1.4rem}
+.quote .dots i{width:9px;height:9px;border-radius:50%;display:block}
+.quote .dots i:nth-child(1){background:var(--gold)}
+.quote .dots i:nth-child(2){background:var(--coral)}
+.quote .dots i:nth-child(3){background:var(--leaf)}
+
+/* ---------- SECTIONS ---------- */
+section{padding:clamp(3rem,7vw,5rem) 0}
+.eyebrow{
+  display:inline-block;font-size:.73rem;font-weight:700;
+  letter-spacing:.18em;text-transform:uppercase;color:var(--coral);
+  margin-bottom:.7rem;
+}
+.h2{font-size:clamp(1.8rem,4.2vw,2.6rem);font-weight:700;letter-spacing:-.02em;line-height:1.15}
+.sub{color:var(--ink-soft);margin-top:.8rem;max-width:34rem}
+.head{margin-bottom:2.6rem}
+.head.center{text-align:center}
+.head.center .sub{margin-left:auto;margin-right:auto}
+
+/* ---------- PROGRAMME ---------- */
+.prog{background:var(--sand)}
+.timeline{display:grid;gap:1.1rem}
+.slot{
+  display:grid;grid-template-columns:132px 1fr;gap:1.4rem;
+  background:#fff;border-radius:var(--radius);
+  padding:1.5rem 1.7rem;border:1px solid var(--line);
+  box-shadow:0 6px 18px rgba(29,43,58,.05);
+  transition:transform .2s,box-shadow .2s;
+}
+.slot:hover{transform:translateY(-3px);box-shadow:0 14px 32px rgba(29,43,58,.09)}
+@media(max-width:640px){.slot{grid-template-columns:1fr;gap:.7rem;padding:1.3rem 1.3rem}}
+.time{
+  font-family:'Fraunces',serif;font-weight:700;
+  font-size:1.18rem;color:var(--gold-deep);
+  display:flex;align-items:flex-start;gap:.5rem;
+}
+.time::before{
+  content:'';width:10px;height:10px;border-radius:50%;
+  background:var(--gold);margin-top:.5rem;flex-shrink:0;
+}
+.slot.c2 .time::before{background:var(--coral)}
+.slot.c3 .time::before{background:var(--leaf)}
+.slot h3{font-size:1.18rem;font-weight:600;margin-bottom:.35rem}
+.slot p{color:var(--ink-soft);font-size:.95rem}
+.tags{display:flex;flex-wrap:wrap;gap:.4rem;margin-top:.8rem}
+.tag{
+  font-size:.74rem;font-weight:600;padding:.28rem .7rem;border-radius:99px;
+  background:rgba(192,138,30,.1);color:var(--gold-deep);
+}
+.slot.c2 .tag{background:rgba(226,103,74,.1);color:#B9472C}
+.slot.c3 .tag{background:rgba(76,140,107,.12);color:#35694F}
+
+/* ---------- ENFANTS ---------- */
+.kids-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.1rem}
+@media(max-width:820px){.kids-grid{grid-template-columns:1fr}}
+.kid{
+  background:#fff;border:1px solid var(--line);border-radius:var(--radius);
+  padding:1.8rem 1.6rem;box-shadow:0 6px 18px rgba(29,43,58,.05);
+}
+.kid .ico{
+  width:46px;height:46px;border-radius:14px;
+  display:grid;place-items:center;font-size:1.3rem;margin-bottom:1rem;
+}
+.kid:nth-child(1) .ico{background:rgba(59,126,161,.12)}
+.kid:nth-child(2) .ico{background:rgba(226,103,74,.12)}
+.kid:nth-child(3) .ico{background:rgba(76,140,107,.14)}
+.kid .age{font-size:.74rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--coral);display:block;margin-bottom:.3rem}
+.kid h3{font-size:1.12rem;font-weight:600;margin-bottom:.5rem}
+.kid p{color:var(--ink-soft);font-size:.93rem}
+
+/* ---------- QUI SOMMES-NOUS ---------- */
+.about-grid{display:grid;grid-template-columns:1.15fr .85fr;gap:clamp(2rem,5vw,3.5rem);align-items:stretch}
+@media(max-width:860px){.about-grid{grid-template-columns:1fr}}
+.about p{color:var(--ink-soft);margin-bottom:1rem}
+.about p strong{color:var(--gold-deep);font-weight:600}
+.infocard{
+  background:linear-gradient(165deg,#FFF6E4 0%,#FFEFE6 100%);
+  border:1px solid var(--line);border-radius:var(--radius);
+  padding:2rem 1.9rem;height:100%;
+  display:flex;flex-direction:column;justify-content:space-between;
+  box-shadow:0 6px 20px rgba(29,43,58,.06);
+}
+.infocard h3{
+  font-family:'Inter',sans-serif;font-size:.76rem;font-weight:700;
+  letter-spacing:.16em;text-transform:uppercase;color:var(--gold-deep);
+  padding-bottom:.9rem;border-bottom:1px solid rgba(192,138,30,.22);margin-bottom:1.3rem;
+}
+.irow{display:flex;gap:.95rem;align-items:flex-start;margin-bottom:1.15rem}
+.irow .ic{
+  width:38px;height:38px;flex-shrink:0;border-radius:11px;background:#fff;
+  display:grid;place-items:center;font-size:1.05rem;
+  box-shadow:0 3px 9px rgba(29,43,58,.07);
+}
+.irow .lab{font-size:.68rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--ink-soft)}
+.irow .val{font-weight:600;font-size:.98rem}
+.free{
+  margin-top:1.4rem;text-align:center;
+  background:var(--leaf);color:#fff;border-radius:12px;
+  padding:.7rem 1rem;font-size:.84rem;font-weight:700;letter-spacing:.04em;
 }
 
-/* ══════════════════════════════════════
-   SECTIONS COMMUNES
-══════════════════════════════════════ */
-.container { max-width: 1100px; margin: 0 auto; padding: 0 2.5rem; }
-.section { padding: 5.5rem 0; }
-@media(max-width:600px) {
-  .container { padding: 0 1.5rem; }
-  .section { padding: 4rem 0; }
+/* ---------- FORMULAIRE ---------- */
+.form-sec{background:var(--sand)}
+.formcard{
+  background:#fff;border:1px solid var(--line);border-radius:22px;
+  padding:clamp(1.6rem,4vw,2.8rem);max-width:720px;margin:0 auto;
+  box-shadow:var(--shadow);
 }
+.fgrid{display:grid;grid-template-columns:1fr 1fr;gap:1.1rem}
+@media(max-width:600px){.fgrid{grid-template-columns:1fr}}
+.fg{display:flex;flex-direction:column;gap:.4rem}
+.fg.full{grid-column:1/-1}
+.fg label{font-size:.76rem;font-weight:700;letter-spacing:.06em;color:var(--ink-soft)}
+.fg input,.fg select,.fg textarea{
+  font-family:inherit;font-size:.98rem;color:var(--ink);
+  background:var(--cream);border:1.5px solid var(--line);
+  border-radius:11px;padding:.82rem 1rem;outline:none;width:100%;
+  transition:border-color .18s,background .18s;
+}
+.fg input:focus,.fg select:focus,.fg textarea:focus{border-color:var(--gold);background:#fff}
+.fg textarea{resize:vertical;min-height:92px}
+.submit-row{margin-top:1.6rem;text-align:center}
+.submit-row .btn{width:100%;justify-content:center;padding:1.05rem 2rem;font-size:1.02rem}
+.note{font-size:.8rem;color:var(--ink-soft);text-align:center;margin-top:.9rem}
+.alert{padding:.95rem 1.2rem;border-radius:12px;font-size:.93rem;font-weight:500;margin-bottom:1.3rem}
+.alert.ok{background:rgba(76,140,107,.12);border:1px solid rgba(76,140,107,.35);color:#2F5E46}
+.alert.ko{background:rgba(226,103,74,.1);border:1px solid rgba(226,103,74,.35);color:#B9472C}
 
-.lbl {
-  display: inline-flex; align-items: center; gap: 10px;
-  font-size: .67rem; letter-spacing: .3em; text-transform: uppercase;
-  color: var(--gold); margin-bottom: .9rem;
+/* ---------- FOOTER ---------- */
+footer{background:var(--ink);color:#fff;padding:clamp(2.6rem,6vw,3.6rem) 0 2rem}
+.foot{display:grid;grid-template-columns:1fr auto;gap:2rem;align-items:center}
+@media(max-width:700px){.foot{grid-template-columns:1fr;text-align:center;justify-items:center}}
+.foot h3{font-size:1.4rem;font-weight:600;margin-bottom:.3rem}
+.foot p{color:rgba(255,255,255,.62);font-size:.92rem}
+.foot .site{color:var(--gold);font-weight:600;margin-top:.5rem;display:inline-block;text-decoration:none}
+.qr{background:#fff;padding:.65rem;border-radius:14px;text-align:center}
+.qr img{width:104px;height:104px}
+.qr span{display:block;font-size:.62rem;font-weight:700;letter-spacing:.08em;color:var(--ink);margin-top:.35rem}
+.legal{
+  border-top:1px solid rgba(255,255,255,.12);margin-top:2.2rem;padding-top:1.3rem;
+  text-align:center;font-size:.8rem;color:rgba(255,255,255,.45);
 }
-.lbl::before { content: '◆'; font-size: 8px; color: var(--gold); line-height: 1.8; }
-.stitle {
-  font-size: clamp(1.9rem, 3.5vw, 2.8rem);
-  font-weight: 700; color: #fff; line-height: 1.1; margin-bottom: 1.8rem;
-}
-.sline { width: 55px; height: 3px; background: var(--gold); margin-bottom: 2rem; }
-
-/* ══════════════════════════════════════
-   QUI SOMMES-NOUS
-   Clé : align-items: stretch + height: 100%
-══════════════════════════════════════ */
-.two-col {
-  display: grid;
-  grid-template-columns: 1.2fr 1fr;
-  gap: 4rem;
-  align-items: stretch;   /* ← les deux colonnes ont la même hauteur */
-}
-@media(max-width:820px) { .two-col { grid-template-columns: 1fr; gap: 3rem; } }
-
-.prose p {
-  font-size: 1rem; line-height: 1.85; color: var(--text); margin-bottom: 1.2rem;
-}
-.prose p:last-child { margin-bottom: 0; }
-.prose strong { color: var(--gold); font-weight: 400; font-style: italic; }
-
-/* Carte événement — s'étire pour matcher la colonne gauche */
-.icard {
-  background: var(--navy);
-  border: 1px solid rgba(201,162,39,.2);
-  border-radius: 14px;
-  padding: 2.5rem;
-  height: 100%;              /* ← remplit toute la hauteur de la colonne */
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-}
-.icard-head {
-  font-size: .82rem; letter-spacing: .12em; text-transform: uppercase;
-  color: var(--gold); padding-bottom: 1.2rem;
-  border-bottom: 1px solid rgba(201,162,39,.12);
-  margin-bottom: 1.8rem;
-}
-.irow {
-  display: flex; gap: 1.2rem; align-items: flex-start; margin-bottom: 1.4rem;
-}
-.irow:last-of-type { margin-bottom: 0; }
-.iico {
-  width: 40px; height: 40px; flex-shrink: 0;
-  background: rgba(201,162,39,.08); border-radius: 10px;
-  display: flex; align-items: center; justify-content: center; font-size: 17px;
-}
-.itxt .l {
-  font-size: .67rem; letter-spacing: .1em; text-transform: uppercase;
-  color: #6b7a99; margin-bottom: 4px;
-}
-.itxt .v { font-size: .95rem; color: #fff; font-weight: 500; }
-.icard-rows { flex: 1; }
-.otag {
-  display: inline-block; margin-top: 2rem;
-  background: rgba(201,162,39,.08); border: 1px solid rgba(201,162,39,.28);
-  color: var(--gold); font-size: .73rem; letter-spacing: .1em;
-  text-transform: uppercase; padding: .5rem 1.2rem; border-radius: 99px;
-  font-weight: 500;
-}
-
-/* ══════════════════════════════════════
-   MISSIONS
-══════════════════════════════════════ */
-.msec { padding: 5.5rem 0; background: var(--darker); }
-@media(max-width:600px) { .msec { padding: 4rem 0; } }
-.mgrid {
-  display: grid; grid-template-columns: repeat(3, 1fr);
-  gap: 1px; margin-top: 3.5rem;
-  background: rgba(201,162,39,.07);
-  border: 1px solid rgba(201,162,39,.07);
-  border-radius: 12px; overflow: hidden;
-}
-@media(max-width:700px) { .mgrid { grid-template-columns: 1fr; } }
-.mitem {
-  padding: 2.8rem 2.3rem; background: var(--dark); transition: background .3s;
-}
-.mitem:hover { background: #111e2e; }
-.mnum {
-  font-size: 3.8rem; font-weight: 900; font-style: italic;
-  color: rgba(201,162,39,.07); line-height: 1; margin-bottom: 1.2rem;
-}
-.mtitle {
-  font-size: .95rem; font-weight: 700; color: var(--gold);
-  letter-spacing: .07em; text-transform: uppercase; margin-bottom: .9rem;
-}
-.mtext { font-size: .9rem; line-height: 1.8; color: #6b7a99; }
-
-/* ══════════════════════════════════════
-   FORMULAIRE
-══════════════════════════════════════ */
-.fsec { padding: 6rem 0; background: var(--dark); }
-@media(max-width:600px) { .fsec { padding: 4rem 0; } }
-.fsec .lbl { justify-content: center; }
-.fsec .stitle { text-align: center; }
-.fsec .sline { margin: 0 auto 2.8rem; }
-.fwrap { max-width: 700px; margin: 0 auto; }
-.fgrid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.4rem; margin-bottom: 1.4rem; }
-@media(max-width:580px) { .fgrid { grid-template-columns: 1fr; } }
-.fg { display: flex; flex-direction: column; gap: .45rem; }
-.fg.s2 { grid-column: 1 / -1; }
-.fg label {
-  font-size: .66rem; letter-spacing: .18em; text-transform: uppercase; color: #6b7a99;
-}
-.fg input, .fg textarea, .fg select {
-  background: rgba(255,255,255,.03); border: 1px solid rgba(255,255,255,.1);
-  border-radius: 6px; padding: .88rem 1.1rem; color: #fff;
-  font-size: .95rem; font-family: Georgia, serif;
-  outline: none; width: 100%; transition: border-color .2s, background .2s;
-}
-.fg input:focus, .fg textarea:focus, .fg select:focus {
-  border-color: var(--gold); background: rgba(201,162,39,.03);
-}
-.fg textarea { resize: vertical; min-height: 95px; }
-.fg select option { background: var(--navy); }
-.fsubmit { margin-top: 2rem; text-align: center; }
-.bsub {
-  background: var(--gold); color: var(--dark);
-  font-family: Georgia, serif; font-weight: 700;
-  font-size: 1rem; letter-spacing: .06em;
-  padding: 1rem 3.5rem; border: none; border-radius: 4px;
-  cursor: pointer; transition: background .2s, transform .2s;
-}
-.bsub:hover { background: var(--gold-l); transform: translateY(-2px); }
-.bsub:disabled { opacity: .6; transform: none; cursor: default; }
-.al {
-  padding: 1rem 1.4rem; border-radius: 7px;
-  margin-bottom: 1.5rem; font-size: .92rem; display: none;
-}
-.al.ok {
-  background: rgba(34,197,94,.08); border: 1px solid rgba(34,197,94,.25);
-  color: #86efac; display: block;
-}
-.al.err {
-  background: rgba(239,68,68,.08); border: 1px solid rgba(239,68,68,.25);
-  color: #fca5a5; display: block;
-}
-
-/* ══════════════════════════════════════
-   FOOTER
-══════════════════════════════════════ */
-footer {
-  background: #050d16; padding: 3rem 2.5rem;
-  text-align: center; border-top: 1px solid rgba(201,162,39,.1);
-}
-.flogo {
-  font-size: .9rem; letter-spacing: .1em; text-transform: uppercase;
-  color: var(--gold); margin-bottom: .4rem;
-}
-.fsub { font-style: italic; font-size: .85rem; color: rgba(255,255,255,.25); }
-.fqr { margin-top: 1.8rem; display: flex; flex-direction: column; align-items: center; gap: .5rem; }
-.fqr img { width: 80px; height: 80px; border-radius: 8px; border: 1px solid rgba(201,162,39,.2); }
-.fqr span { font-size: .65rem; letter-spacing: .12em; text-transform: uppercase; color: #6b7a99; }
 </style>
 </head>
 <body>
 
+<div class="ribbon">Samedi 24 octobre 2026 &middot; 11h &ndash; 16h &middot; Entrée libre et gratuite</div>
+
 <!-- HERO -->
-<div class="hero-wrap">
-  <div class="hero">
-    <div class="hero-text">
-      <div class="hero-eyebrow">Ensemble pour la fraternité</div>
-      <h1 class="hero-title">Journée</h1>
-      <p class="hero-sub">Espérance</p>
-      <div class="hero-dates">
-        <div class="hero-date"><strong>Samedi 17 octobre 2026</strong></div>
-        <div class="hero-date">Lieu à confirmer prochainement</div>
+<header class="hero">
+  <div class="wrap hero-grid">
+    <div>
+      <div class="kicker"><span></span> Ensemble pour la fraternité</div>
+      <h1><span class="l1">Journée</span><span class="l2">Espérance</span></h1>
+      <p class="lead">Une journée pour se rencontrer, partager un repas et écouter celles et ceux qui ont retrouvé l&rsquo;espérance. Chrétiens, musulmans, voisins&nbsp;: tout le monde est le bienvenu.</p>
+      <div class="facts">
+        <div class="fact">&#128197; <b>Samedi 24 octobre 2026</b></div>
+        <div class="fact">&#128336; <b>11h &ndash; 16h</b></div>
+        <div class="fact">&#128205; Lieu à confirmer</div>
       </div>
-      <p class="hero-desc">Des témoignages vivants portés par des personnes qui ont traversé les épreuves — et qui s'en sont relevées.</p>
-      <a href="#inscription" class="cta">Je m'inscris&nbsp;</a>
+      <div class="actions">
+        <a href="#inscription" class="btn">Je m'inscris &rarr;</a>
+        <a href="#programme" class="btn btn-ghost">Voir le programme</a>
+      </div>
     </div>
-    <div class="hero-photo">
-      <div class="photo-frame">
-        <img src="photo.jpg" alt="La communauté Ensemble pour la fraternité">
-      </div>
-      <div class="photo-deco"></div>
+    <div class="photo">
+      <img src="photo.jpg" alt="Habitants du quartier réunis en plein air lors d&rsquo;une rencontre du collectif">
+      <div class="badge">Rendez-vous le<em>24 octobre</em></div>
     </div>
   </div>
-</div>
+</header>
 
 <!-- CITATION -->
-<div class="quote-band">
-  <blockquote>De nos quartiers,<br>la lumière peut sortir.</blockquote>
+<div class="quote">
+  <div class="wrap">
+    <div class="dots"><i></i><i></i><i></i></div>
+    <p>De nos quartiers, la lumière peut sortir.</p>
+  </div>
 </div>
 
+<!-- PROGRAMME -->
+<section class="prog" id="programme">
+  <div class="wrap">
+    <div class="head center">
+      <span class="eyebrow">Le déroulé de la journée</span>
+      <h2 class="h2">Programme du 24 octobre</h2>
+      <p class="sub">Cinq heures ensemble, de la première poignée de main au dernier témoignage.</p>
+    </div>
+    <div class="timeline">
+
+      <article class="slot c1">
+        <div class="time">11h &ndash; 12h</div>
+        <div>
+          <h3>Présentation d&rsquo;Ensemble pour la fraternité</h3>
+          <p>Accueil des participants et présentation du collectif&nbsp;: qui nous sommes, d&rsquo;où vient ce projet et pourquoi nous allons à la rencontre des habitants de nos quartiers.</p>
+          <div class="tags"><span class="tag">Accueil</span><span class="tag">Présentation</span><span class="tag">Tout public</span></div>
+        </div>
+      </article>
+
+      <article class="slot c2">
+        <div class="time">12h &ndash; 14h</div>
+        <div>
+          <h3>Déjeuner partagé</h3>
+          <p>Un repas préparé par des cuisiniers et partagé tous ensemble. Le moment où l&rsquo;on fait vraiment connaissance, autour de la même table.</p>
+          <div class="tags"><span class="tag">Repas offert</span><span class="tag">Préparé sur place</span><span class="tag">Convivialité</span></div>
+        </div>
+      </article>
+
+      <article class="slot c3">
+        <div class="time">14h &ndash; 16h</div>
+        <div>
+          <h3>Table ronde, témoignages et activités enfants</h3>
+          <p>Des parcours de vie racontés sans filtre&nbsp;: des personnes qui ont traversé les épreuves et qui s&rsquo;en sont relevées. En parallèle, les enfants ont leurs propres activités encadrées.</p>
+          <div class="tags"><span class="tag">Table ronde</span><span class="tag">Témoignages</span><span class="tag">Espace enfants</span></div>
+        </div>
+      </article>
+
+    </div>
+  </div>
+</section>
+
+<!-- ENFANTS -->
+<section>
+  <div class="wrap">
+    <div class="head center">
+      <span class="eyebrow">Venez en famille</span>
+      <h2 class="h2">Chacun a sa place</h2>
+      <p class="sub">Les enfants sont accueillis et encadrés pendant toute la journée&nbsp;: vous pouvez venir l&rsquo;esprit tranquille.</p>
+    </div>
+    <div class="kids-grid">
+      <div class="kid">
+        <div class="ico">&#129496;</div>
+        <span class="age">Les tout-petits</span>
+        <h3>Garderie</h3>
+        <p>Un espace calme et encadré pour les plus jeunes, afin que les parents puissent profiter pleinement des échanges.</p>
+      </div>
+      <div class="kid">
+        <div class="ico">&#127912;</div>
+        <span class="age">6 &ndash; 12 ans</span>
+        <h3>Activités ludiques</h3>
+        <p>Jeux, ateliers et animations pensées pour eux, avec des bénévoles présents tout au long de l&rsquo;après-midi.</p>
+      </div>
+      <div class="kid">
+        <div class="ico">&#127908;</div>
+        <span class="age">13 ans et +</span>
+        <h3>Avec les adultes</h3>
+        <p>Les jeunes rejoignent la table ronde et les témoignages&nbsp;: leur place est pleinement dans la discussion.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
 <!-- QUI SOMMES-NOUS -->
-<section class="section">
-  <div class="container">
-    <div class="two-col">
-
-      <!-- Colonne gauche -->
-      <div>
-        <div class="lbl">Qui sommes-nous</div>
-        <h2 class="stitle">Ensemble<br>pour la fraternité</h2>
-        <div class="sline"></div>
-        <div class="prose">
-          <p><strong>Ensemble pour la fraternité</strong> est un collectif de citoyens, chrétiens et musulmans réunis, né de la volonté d'aller à la rencontre des habitants de nos quartiers.</p>
-          <p>Nous croyons que la rencontre entre les personnes, par-delà les différences de foi et de parcours, peut faire frémir les cœurs et redonner de l'espérance là où elle semble avoir disparu.</p>
-          <p>La Journée Espérance, c'est une journée de témoignages vivants portés par des personnes qui ont traversé les épreuves — drogue, violence, exclusion — et qui s'en sont relevées. Ouverte à tous, sans restriction.</p>
-        </div>
-      </div>
-
-      <!-- Colonne droite — même hauteur grâce à height:100% -->
-      <div>
-        <div class="icard">
-          <div>
-            <div class="icard-head">L'événement</div>
-            <div class="icard-rows">
-              <div class="irow">
-                <div class="iico">📅</div>
-                <div class="itxt">
-                  <div class="l">Date</div>
-                  <div class="v">Samedi 17 octobre 2026</div>
-                </div>
-              </div>
-              <div class="irow">
-                <div class="iico">📍</div>
-                <div class="itxt">
-                  <div class="l">Lieu</div>
-                  <div class="v">À confirmer prochainement</div>
-                </div>
-              </div>
-              <div class="irow">
-                <div class="iico">🕊️</div>
-                <div class="itxt">
-                  <div class="l">Public</div>
-                  <div class="v">Ouvert à tous, sans condition</div>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div>
-            <span class="otag">Entrée entièrement gratuite</span>
-          </div>
-        </div>
-      </div>
-
+<section class="prog">
+  <div class="wrap about-grid">
+    <div class="about">
+      <span class="eyebrow">Qui sommes-nous</span>
+      <h2 class="h2">Ensemble pour la fraternité</h2>
+      <p style="margin-top:1.4rem"><strong>Ensemble pour la fraternité</strong> est un collectif de citoyens, chrétiens et musulmans réunis, né de la volonté d&rsquo;aller à la rencontre des habitants de nos quartiers.</p>
+      <p>Nous croyons que la rencontre entre les personnes, par-delà les différences de foi et de parcours, peut faire frémir les cœurs et redonner de l&rsquo;espérance là où elle semble avoir disparu.</p>
+      <p>La Journée Espérance, c&rsquo;est une journée de témoignages vivants portés par des personnes qui ont traversé les épreuves &mdash; drogue, violence, exclusion &mdash; et qui s&rsquo;en sont relevées. Ouverte à tous, sans restriction.</p>
     </div>
-  </div>
-</section>
-
-<!-- MISSIONS -->
-<section class="msec">
-  <div class="container">
-    <div class="lbl">Notre mission</div>
-    <h2 class="stitle">Ce que nous portons</h2>
-    <div class="mgrid">
-      <div class="mitem">
-        <div class="mnum">01</div>
-        <div class="mtitle">Rencontrer</div>
-        <p class="mtext">Aller vers les habitants — sur la dale Kennedy, au Gros Chêne, dans les lieux de vie — pour rassurer socialement et rappeler que personne n'est seul.</p>
-      </div>
-      <div class="mitem">
-        <div class="mnum">02</div>
-        <div class="mtitle">Témoigner</div>
-        <p class="mtext">Donner la parole à celles et ceux qui s'en sont sortis malgré les épreuves, pour montrer que la lumière peut sortir de nos quartiers.</p>
-      </div>
-      <div class="mitem">
-        <div class="mnum">03</div>
-        <div class="mtitle">Espérer</div>
-        <p class="mtext">Offrir aux jeunes et à tous les habitants des raisons de croire en l'avenir, à travers la foi ou par tout autre chemin de vie.</p>
+    <div>
+      <div class="infocard">
+        <div>
+          <h3>Infos pratiques</h3>
+          <div class="irow">
+            <div class="ic">&#128197;</div>
+            <div><div class="lab">Date</div><div class="val">Samedi 24 octobre 2026</div></div>
+          </div>
+          <div class="irow">
+            <div class="ic">&#128336;</div>
+            <div><div class="lab">Horaires</div><div class="val">De 11h à 16h</div></div>
+          </div>
+          <div class="irow">
+            <div class="ic">&#128205;</div>
+            <div><div class="lab">Lieu</div><div class="val">À confirmer prochainement</div></div>
+          </div>
+          <div class="irow">
+            <div class="ic">&#127869;</div>
+            <div><div class="lab">Repas</div><div class="val">Déjeuner préparé et offert</div></div>
+          </div>
+          <div class="irow">
+            <div class="ic">&#128106;</div>
+            <div><div class="lab">Public</div><div class="val">Tous âges, familles bienvenues</div></div>
+          </div>
+        </div>
+        <div class="free">Entree libre &middot; Participation gratuite</div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- FORMULAIRE -->
-<section class="fsec" id="inscription">
-  <div class="container">
-    <div class="lbl">Participer</div>
-    <h2 class="stitle">S'inscrire à la Journée</h2>
-    <div class="sline"></div>
-    <div class="fwrap">
-      <div id="ab"></div>
-      <form id="frm">
+<!-- INSCRIPTION -->
+<section class="form-sec" id="inscription">
+  <div class="wrap">
+    <div class="head center">
+      <span class="eyebrow">Participer</span>
+      <h2 class="h2">Réservez votre place</h2>
+      <p class="sub">L&rsquo;inscription nous aide à prévoir le nombre de repas. Cela prend moins d&rsquo;une minute.</p>
+    </div>
+    <div class="formcard">
+      <div id="alertbox"></div>
+      <form id="frm" novalidate>
         <div class="fgrid">
-          <div class="fg"><label>Prénom *</label><input type="text" name="prenom" required placeholder="Jean"></div>
-          <div class="fg"><label>Nom *</label><input type="text" name="nom" required placeholder="Dupont"></div>
-          <div class="fg"><label>Email *</label><input type="email" name="email" required placeholder="jean@exemple.fr"></div>
-          <div class="fg"><label>Téléphone</label><input type="tel" name="telephone" placeholder="06 00 00 00 00"></div>
-          <div class="fg"><label>Nombre de personnes</label>
-            <select name="nombre_personnes">
+          <div class="fg"><label for="f-prenom">Prénom *</label><input id="f-prenom" type="text" name="prenom" required placeholder="Jean"></div>
+          <div class="fg"><label for="f-nom">Nom *</label><input id="f-nom" type="text" name="nom" required placeholder="Dupont"></div>
+          <div class="fg"><label for="f-email">Email *</label><input id="f-email" type="email" name="email" required placeholder="jean@exemple.fr"></div>
+          <div class="fg"><label for="f-tel">Téléphone</label><input id="f-tel" type="tel" name="telephone" placeholder="06 00 00 00 00"></div>
+          <div class="fg full"><label for="f-nb">Nombre de personnes (enfants compris)</label>
+            <select id="f-nb" name="nombre_personnes">
               <option value="1">1 personne</option>
               <option value="2">2 personnes</option>
               <option value="3">3 personnes</option>
               <option value="4">4 personnes</option>
-              <option value="5">5 ou plus</option>
+              <option value="5">5 personnes</option>
+              <option value="6">6 personnes et plus</option>
             </select>
           </div>
-          <div class="fg s2"><label>Message (optionnel)</label><textarea name="message" placeholder="Un mot à nous transmettre..."></textarea></div>
+          <div class="fg full"><label for="f-msg">Un mot pour nous (facultatif)</label><textarea id="f-msg" name="message" placeholder="Enfants à la garderie, allergie alimentaire, question&hellip;"></textarea></div>
         </div>
-        <div class="fsubmit"><button type="submit" class="bsub">Confirmer mon inscription</button></div>
+        <div class="submit-row">
+          <button type="submit" class="btn" id="btn-submit">Confirmer mon inscription</button>
+          <p class="note">Vos coordonnées servent uniquement à l&rsquo;organisation de la journée.</p>
+        </div>
       </form>
     </div>
   </div>
@@ -443,46 +462,90 @@ footer {
 
 <!-- FOOTER -->
 <footer>
-  <div class="flogo">Ensemble pour la fraternité</div>
-  <div class="fsub">Journée Espérance · 17 octobre 2026</div>
-  <div class="fqr">
-    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAXIAAAFyCAIAAABnRsZeAAAHpUlEQVR4nO3czW1sRRhFUQxv6gicgeMgKSIgKVJDIgF0xaN26avqXmvu/rm2t2pwVB+fX9+/AHR+nf4AwKuRFSAmK0BMVoCYrAAxWQFisgLEZAWIyQoQkxUgJitATFaAmKwAMVkBYrICxGQFiMkKEJMVICYrQOzHyg//9eff1ec4xO9//Pa/f/b5aTy/8tSTXPlUZ36jZ+/2fVes/C84rQAxWQFisgLEZAWIyQoQkxUgJitATFaAmKwAsaWV7bOVld4+U2vIfe+77znv26Q+e72167v9LzitADFZAWKyAsRkBYjJChCTFSAmK0BMVoCYrACxjSvbZzeuTqfWn/sWqyumPtXrbXDP/B2tcFoBYrICxGQFiMkKEJMVICYrQExWgJisADFZAWJjK9vXs29HO/XK77ZYPfPG2Rs5rQAxWQFisgLEZAWIyQoQkxUgJitATFaAmKwAMSvbn3DmYnXfp5oy9ZxvfFZncloBYrICxGQFiMkKEJMVICYrQExWgJisADFZAWJjK1ubxf9u6llNbX9X3vfGu2xf73/BaQWIyQoQkxUgJitATFaAmKwAMVkBYrICxGQFiG1c2a7sHc+07xbVG++jPfP7nvmcX+9/4ZnTChCTFSAmK0BMVoCYrAAxWQFisgLEZAWIyQoQW1rZvt4dnM9Wvu++Z7VvwTm1Z73Ru/0vPHNaAWKyAsRkBYjJChCTFSAmK0BMVoCYrAAxWQFiH59f39Of4V+srDD37TvPXFKeedPtjc/Zk6w4rQAxWQFisgLEZAWIyQoQkxUgJitATFaAmKwAsaW7bKfsu2P12ZkrzKmnMeXd7u698VZgpxUgJitATFaAmKwAMVkBYrICxGQFiMkKEJMVILbxLtupZeHUKvHMneXrPclnr/f7XTH1qZxWgJisADFZAWKyAsRkBYjJChCTFSAmK0BMVoDY2F22Ny5HX+/m133f6Mal7JQz/9pXOK0AMVkBYrICxGQFiMkKEJMVICYrQExWgJisALGlu2xvXEOeedfpvk3q1M7y2dT33ffKZ/4vTG2snVaAmKwAMVkBYrICxGQFiMkKEJMVICYrQExWgNjYXbZTztzvrqwh3+0+2hU33hp75pN85rQCxGQFiMkKEJMVICYrQExWgJisADFZAWKyAsQ2rmyndoc33t76/KlWPvOZC91932jfz+5z5qda4bQCxGQFiMkKEJMVICYrQExWgJisADFZAWKyAsQ2rmyn9qwrG9x97/vszFtUn73eNvTZ1Pc98+/qmdMKEJMVICYrQExWgJisADFZAWKyAsRkBYjJChBbWtmu7PCm1p9Tt6g+27d3PHMLO7UMntorT61dpxbnTitATFaAmKwAMVkBYrICxGQFiMkKEJMVICYrQOzj8+v7f//w1GL1zFXi1Apz6pXPfN9nN94Z/OzM/yOnFSAmK0BMVoCYrAAxWQFisgLEZAWIyQoQkxUgNrayfXbjrbH7NppnbnCnbsl9t+e8Yur367QCxGQFiMkKEJMVICYrQExWgJisADFZAWKyAsQOXdmu2LeUXXnfM+86ndocr7hxsTr1yivvu8JpBYjJChCTFSAmK0BMVoCYrAAxWQFisgLEZAWIbVzZTt1Hu8+ZN+yeeTvvjfYtZVfc+Pt1WgFisgLEZAWIyQoQkxUgJitATFaAmKwAMVkBYmN32e5bjlqsnmBqsXrj7bwrpv6enzmtADFZAWKyAsRkBYjJChCTFSAmK0BMVoCYrACxH/teemX/t8++971xGXzj7a37nLnP3sddtsA1ZAWIyQoQkxUgJitATFaAmKwAMVkBYrICxDbeZXvmvaEWqye874ozF6vPpm59XnnlFU4rQExWgJisADFZAWKyAsRkBYjJChCTFSAmK0Bs48r22Zk33a6Yuuv0xj3r1F/OjX91Ny6wnVaAmKwAMVkBYrICxGQFiMkKEJMVICYrQExWgNjSyvbdnHlv6NQ2dGrteuPqdN/7nvk36bQCxGQFiMkKEJMVICYrQExWgJisADFZAWKyAsR+rPzwmXd/rljZHZ55x+rr3d565meeWug+m3pfpxUgJitATFaAmKwAMVkBYrICxGQFiMkKEJMVILZ0l+2Zy8JnZ95X+uzM/e4+N/4WVpx5G/EKpxUgJitATFaAmKwAMVkBYrICxGQFiMkKEJMVILZ0l+2KfcvCqTXk8/uurF1v3NHu+1Q37qT3OfO377QCxGQFiMkKEJMVICYrQExWgJisADFZAWKyAsTGVrbvZuou25VXfrayDJ4y9ST37aTPfM5OK0BMVoCYrAAxWQFisgLEZAWIyQoQkxUgJitAzMr2J+xbUr6effvdqd/Cvp+dWvfue1ZOK0BMVoCYrAAxWQFisgLEZAWIyQoQkxUgJitAbGxl+26r031Lyn1PcmrtOvW3ceP7ussWeAuyAsRkBYjJChCTFSAmK0BMVoCYrAAxWQFiG1e2Z+7/ppx5t+uUqRtnp57GjffvrnBaAWKyAsRkBYjJChCTFSAmK0BMVoCYrAAxWQFiH59f39OfAXgpTitATFaAmKwAMVkBYrICxGQFiMkKEJMVICYrQExWgJisADFZAWKyAsRkBYjJChCTFSAmK0BMVoCYrACxfwBOr+FbjgJnhwAAAABJRU5ErkJggg==" alt="QR Code journee-esperence.fr">
-    <span>journee-esperence.fr</span>
+  <div class="wrap foot">
+    <div>
+      <h3 class="serif">Journée Espérance</h3>
+      <p>Samedi 24 octobre 2026 &middot; 11h &ndash; 16h &middot; Ensemble pour la fraternité</p>
+      <a class="site" href="https://journee-esperance.fr">journee-esperance.fr</a>
+    </div>
+    <div class="qr">
+      <img src="data:image/png;base64,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" alt="QR code vers journee-esperance.fr">
+      <span>SCANNEZ-MOI</span>
+    </div>
   </div>
+  <div class="wrap legal">Ensemble pour la fraternité &mdash; collectif citoyen, chrétiens et musulmans réunis.</div>
 </footer>
 
 <script>
-var SB='https://aiafvjhiprdldtwmktur.supabase.co';
-var KEY='eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImFpYWZ2amhpcHJkbGR0d21rdHVyIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzEwMTYzMzcsImV4cCI6MjA4NjU5MjMzN30.YP9_K6srLfHq86EsD4E-StRx_UJxwoboDz3Er4tw2yk';
-document.getElementById('frm').addEventListener('submit', async function(e) {
-  e.preventDefault();
-  var f=e.target, b=f.querySelector('.bsub'), ab=document.getElementById('ab');
-  b.disabled=true; b.textContent='Envoi...'; ab.innerHTML='';
-  var d={
-    nom:f.nom.value.trim(), prenom:f.prenom.value.trim(),
-    email:f.email.value.trim(), telephone:f.telephone.value.trim()||null,
-    nombre_personnes:parseInt(f.nombre_personnes.value),
-    message:f.message.value.trim()||null
-  };
-  try {
-    var r=await fetch(SB+'/rest/v1/journee_esperance_inscriptions',{
-      method:'POST',
-      headers:{'Content-Type':'application/json',apikey:KEY,'Authorization':'Bearer '+KEY,'Prefer':'return=minimal'},
-      body:JSON.stringify(d)
-    });
-    if(r.ok||r.status===201) {
-      ab.innerHTML='<div class="al ok">Inscription confirmée ! Merci et à bientôt le 17 octobre 2026.</div>';
-      f.reset();
-    } else {
-      var err=await r.json().catch(function(){return{};});
-      throw new Error(err.message||'Erreur');
-    }
-  } catch(err) {
-    ab.innerHTML='<div class="al err">'+err.message+'</div>';
-  } finally {
-    b.disabled=false; b.textContent='Confirmer mon inscription';
+(function () {
+  var SB  = 'https://aiafvjhiprdldtwmktur.supabase.co';
+  var KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImFpYWZ2amhpcHJkbGR0d21rdHVyIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzEwMTYzMzcsImV4cCI6MjA4NjU5MjMzN30.YP9_K6srLfHq86EsD4E-StRx_UJxwoboDz3Er4tw2yk';
+
+  var form = document.getElementById('frm');
+  var box  = document.getElementById('alertbox');
+  var btn  = document.getElementById('btn-submit');
+
+  function show(type, msg) {
+    box.innerHTML = '<div class="alert ' + type + '">' + msg + '</div>';
+    box.scrollIntoView({ behavior: 'smooth', block: 'center' });
   }
-});
+
+  form.addEventListener('submit', function (e) {
+    e.preventDefault();
+
+    var prenom = form.prenom.value.trim();
+    var nom    = form.nom.value.trim();
+    var email  = form.email.value.trim();
+
+    if (!prenom || !nom || !email) {
+      show('ko', 'Merci de renseigner votre prénom, votre nom et votre email.');
+      return;
+    }
+    if (email.indexOf('@') < 1 || email.indexOf('.') < 0) {
+      show('ko', 'L\'adresse email ne semble pas valide.');
+      return;
+    }
+
+    var payload = {
+      prenom: prenom,
+      nom: nom,
+      email: email,
+      telephone: form.telephone.value.trim() || null,
+      nombre_personnes: parseInt(form.nombre_personnes.value, 10) || 1,
+      message: form.message.value.trim() || null
+    };
+
+    btn.disabled = true;
+    btn.textContent = 'Envoi en cours...';
+    box.innerHTML = '';
+
+    fetch(SB + '/rest/v1/journee_esperance_inscriptions', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'apikey': KEY,
+        'Authorization': 'Bearer ' + KEY,
+        'Prefer': 'return=minimal'
+      },
+      body: JSON.stringify(payload)
+    })
+    .then(function (r) {
+      if (r.ok || r.status === 201) {
+        show('ok', 'Inscription confirmée ! Merci, nous vous attendons le samedi 24 octobre 2026 dès 11h.');
+        form.reset();
+      } else {
+        return r.text().then(function (t) { throw new Error(t || ('Erreur ' + r.status)); });
+      }
+    })
+    .catch(function (err) {
+      show('ko', 'Une erreur est survenue : ' + err.message + '. Merci de réessayer dans un instant.');
+    })
+    .then(function () {
+      btn.disabled = false;
+      btn.textContent = 'Confirmer mon inscription';
+    });
+  });
+})();
 </script>
 </body>
 </html>
